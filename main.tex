@@ -2,14 +2,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
-\usepackage{graphicx}
+\usepackage{graphicx,wrapfig,lipsum}
 \usepackage{geometry}
 \usepackage{minted}
 \usepackage{csquotes}
 \usepackage{hyperref}
 \usepackage[toc,page]{appendix}
-\usepackage[backend=biber,style=apa]{biblatex}  % or style=numeric, authoryear, etc.
-\addbibresource{sources.bib}
+\usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
+\addbibresource{references.bib}
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
 
@@ -91,7 +91,7 @@ Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchfüh
 Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul Objektorientierte Programmierung. 
 Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. Man kann dieses Spiel zu zweit Spielen, 
 im Fall des Projektes, lokal gegen einen anderen Spieler oder gegen einen Computergegner. Das Spiel hat zudem ein GUI (Graphical User Interface), 
-welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt.\\
+welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\ref{img:gameInProgress}.\\
 Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} kollaboriert. 
 
 
@@ -105,13 +105,18 @@ Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{
 \section{UI Tests}
 
 \chapter{Probleme des Projektes}
+\section{Behobene Probleme}
 \section{Nicht behobene Probleme}
 
 \chapter{Fazit}
 
 \begin{appendices}
 \chapter{Grafiken}
-{\includegraphics[width=15cm]{screenshot_game_inprogress.png}}
+
+\begin{wrapfigure}{r}{\linewidth}
+\includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
+\caption{Bild des Spiels}\label{img:gameInProgress}
+\end{wrapfigure} 
 
 \end{appendices}
 
