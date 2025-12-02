@@ -1,1 +1,6 @@
 *
+
+## allow project files
+!*.tex
+!*.bib
+!*.png
