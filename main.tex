@@ -129,12 +129,12 @@ Nun kann das Projekt einfach über \mintinline{shell}|gradle run|
 \chapter{Grafiken}
 
 \begin{wrapfigure}{r}{\linewidth}
-\includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
 \caption{Bild des Spiels}\label{img:gameInProgress}
-
-
+\includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
 \end{wrapfigure}
+
 \begin{figure}
+\caption{Projektstruktur vor Verbesserungen (Einstiegspunkt in rot)}\label{gph:startProjectLayout}
 \dirtree{%
 .1 VierGewinnt/.
 .2 lib/.
@@ -144,34 +144,34 @@ Nun kann das Projekt einfach über \mintinline{shell}|gradle run|
 .3 SpielerVsSpieler.png.
 .2 src/.
 .3 api/.
-.4 BoardInterface.
-.4 BoardTestInterface.
-.4 TileInterface.
+.4 BoardInterface.java.
+.4 BoardTestInterface.java.
+.4 TileInterface.java.
 .3 gui/.
 .4 entity/.
-.5 BordersForCircle.
-.5 Circle.
+.5 BordersForCircle.java.
+.5 Circle.java.
 .4 frames/.
-.5 EndFrame.
-.5 MainPanel.
-.5 OptionsFrame.
-.5 StartFrame.
+.5 EndFrame.java.
+.5 MainPanel.java.
+.5 OptionsFrame.java.
+.5 StartFrame.java.
 .4 handler/.
-.5 MouseHandler.
+.5 MouseHandler.java.
 .4 main/.
 .5 \textcolor{red}{App}.
 .3 logic/.
-.4 Board.
-.4 Tile.
+.4 Board.java.
+.4 Tile.java.
 .3 test/.
-.4 GameTest.
+.4 GameTest.java.
 .2 {.gitignore}.
 .2 README.md.
 .2 TEST.md.
 .2 VierGewinnt.jar.
 .2 win4.jar.
 }
-\caption{Projektstruktur vor Verbesserungen (Einstiegspunkt in rot)}\label{gph:startProjectLayout}
+
 \end{figure}
 
 
