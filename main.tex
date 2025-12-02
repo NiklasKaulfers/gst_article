@@ -6,6 +6,7 @@
 \usepackage{geometry}
 \usepackage{minted}
 \usepackage{csquotes}
+\usepackage{dirtree}
 \usepackage{hyperref}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
@@ -88,16 +89,26 @@ Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchfüh
 
 \chapter{Aufbau}
 \section{Testobjekt}
-Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul Objektorientierte Programmierung. 
-Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. Man kann dieses Spiel zu zweit Spielen, 
-im Fall des Projektes, lokal gegen einen anderen Spieler oder gegen einen Computergegner. Das Spiel hat zudem ein GUI (Graphical User Interface), 
+Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul OOP (Objektorientierte Programmierung). 
+Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. Dieses Spiel zu zweit Spielen spielbar. 
+Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
+Das Spiel hat zudem ein GUI (Graphical User Interface), 
 welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\ref{img:gameInProgress}.\\
-Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} kollaboriert. 
+Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} 
+kollaboriert. Da es sich hier um ein Projekt von Studenten handelt, sind mehrere Fehler vorhanden.
 
 
 
-\section{Konzept}
+
+\section{Konzept der Tests}
+Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. Die Vorgehensweise ist wie folgt.
+Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
+Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. Hierfür wird im Projekt eine eigene Methode verwendet.
 \section{Nötige Anpassungen}
+Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
+da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
+Im vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
+Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\ref{gph:startProjectLayout}.
 
 \chapter{Durchführung}
 \section{Unit Tests}
@@ -116,7 +127,49 @@ Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{
 \begin{wrapfigure}{r}{\linewidth}
 \includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
 \caption{Bild des Spiels}\label{img:gameInProgress}
-\end{wrapfigure} 
+
+
+\end{wrapfigure}
+\begin{figure}
+\dirtree{%
+.1 VierGewinnt/.
+.2 lib/.
+.3 junit-platform-console-standalone.
+.2 res/.
+.3 SpielerVsComputer.png.
+.3 SpielerVsSpieler.png.
+.2 src/.
+.3 api/.
+.4 BoardInterface.
+.4 BoardTestInterface.
+.4 TileInterface.
+.3 gui/.
+.4 entity/.
+.5 BordersForCircle.
+.5 Circle.
+.4 frames/.
+.5 EndFrame.
+.5 MainPanel.
+.5 OptionsFrame.
+.5 StartFrame.
+.4 handler/.
+.5 MouseHandler.
+.4 main/.
+.5 App.
+.3 logic/.
+.4 Board.
+.4 Tile.
+.3 test/.
+.4 GameTest.
+.2 \.gitignore.
+.2 README.md.
+.2 TEST.md.
+.2 VierGewinnt.jar.
+.2 win4.jar.
+}
+\caption{Projektstruktur vor Verbesserungen}\label{gph:startProjectLayout}
+\end{figure}
+
 
 \end{appendices}
 
