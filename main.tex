@@ -1,0 +1,109 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage[toc,page]{appendix}
+\usepackage[backend=biber,style=apa]{biblatex}  % or style=numeric, authoryear, etc.
+\addbibresource{sources.bib}
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+
+% -------------------------------------------------------
+% Titelseiten-Informationen
+% -------------------------------------------------------
+\title{Softwaretests in dem View-Gewinnt-Projekt der iib23}
+
+% Art der Arbeit + Studiengang
+\newcommand{\arbeitstyp}{Beleg}
+% Modul / Lehrveranstaltung + Dozent:innen
+\newcommand{\modul}{Modul / Lehrveranstaltung: Grundlagen des Softwaretestens\\
+Dozent: Prof.\ Dr.\ Matthias Längrich}
+% Hochschule + Fakultät
+\newcommand{\hochschule}{
+\includegraphics[height=2.5cm]{LOGO_HSZG_SUBLINE_GRANIT.png}\\[5mm]   % Logo der HSZG einfügen
+Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
+}
+
+% Autor
+\author{
+    Niklas Kaulfers \\[2mm]
+    Matrikelnummer: 1064032
+}
+% Betreuer (für BA-Thesis, sonst leer lassen)
+\newcommand{\betreuer}{}
+
+% Datum der Abgabe
+\date{Abgabedatum: \today}
+
+% -------------------------------------------------------
+% Titelseite neu definieren
+% -------------------------------------------------------
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \centering
+        {\Large \hochschule\par}
+        \vfill
+
+        {\huge \bfseries \@title\par}
+        \vspace{1cm}
+
+        {\large \arbeitstyp\par}
+        \vspace{0.5cm}
+
+        {\large \modul\par}
+        \vspace{0.5cm}
+
+        {\large \betreuer\par}
+        \vspace{1.5cm}
+
+        {\Large \@author\par}
+        \vspace{2cm}
+
+        {\large \@date\par}
+
+        \vfill
+    \end{titlepage}
+}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+\chapter{Einleitung}
+{
+Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
+\par}
+
+\chapter{Aufbau}
+\section{Testobjekt}
+Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul Objektorientierte Programmierung. Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. Man kann dieses Spiel zu zweit Spielen, im Fall des Projektes, lokal gegen einen anderen Spieler oder gegen einen Computergegner. Das Spiel hat zudem ein GUI (Graphical User Interface), welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt.\\
+Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} kollaboriert. 
+
+
+
+\section{Konzept}
+\section{Nötige Anpassungen}
+
+\chapter{Durchführung}
+\section{Unit Tests}
+\section{Integration Tests}
+\section{UI Tests}
+
+\begin{appendices}
+\chapter{Grafiken}
+{\includegraphics[width=15cm]{screenshot_game_inprogress.png}}
+
+\end{appendices}
+
+
+
+\end{document}
