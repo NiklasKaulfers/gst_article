@@ -118,7 +118,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen\footfullcite[p.10]{myers2004art}.
     Tatsächlich werden Tests jedoch verwendet um Errors zu finden und fehlverhalten der Software im Vorhinein zu verringern.
     Auch hier im Projekt waren die bereits existieren Tests eher minimal und testen vor allem die Hauptszenarios. 
-    Vor allem explizite Logik ist noch ungetestet.
+    Vor allem explizite Logik ist noch ungetestet.\\
+    Implementation von Verbesserungen oder eventuelle Bugfixes sind zudem unerwartet, da es sich hierbei um ein abgeschlossenes Projekt handelt.
+    Das Projekt hat keinerlei Bugreportmethoden oder ähnliches. Es gibt zwar Issues in der GitHub-Repository, diese werden jedoch nicht in Pullrequests thematisiert.
 \subsection{Ökonomische Betrachtung}
     Während im ökonomischen Sinn meist die Gesamtkosten betrachtet werden, ist in dieser Arbeit die Zeit von größerer Bedeutung.
     Rahmen des Projektes stellt das Wintersemester 2025/26.\\
@@ -126,19 +128,6 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Das Projekt war ein Teil eines Hochschulmoduls, somit waren die Ressourcen stark begrenzt. 
     Auch hierzu anzumerken ist, dass es sich um ein Modul aus dem zweiten Semester handelt, 
     weswegen auch die Erfahrungen der beteiligten noch nicht ausgereift waren.
-
-
-
-
-
-\section{Konzept der Tests}
-    Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
-    Die Vorgehensweise ist wie folgt.
-    Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. 
-    So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
-    Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
-    Hierfür wird im Projekt eine eigene Methode verwendet.
-
 \section{Nötige Anpassungen}
     Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
     da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
@@ -151,6 +140,17 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     %|
     ausgeführt werden.
     Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
+
+\chapter{Planung}
+\section{Arten von Tests}
+\section{Konzept der Tests}
+    Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
+    Die Vorgehensweise ist wie folgt.
+    Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. 
+    So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
+    Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
+    Hierfür wird im Projekt eine eigene Methode verwendet.
+
 
 \chapter{Durchführung}
 \section{Unit Tests}
