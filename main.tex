@@ -116,9 +116,15 @@ Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem be
 Dieses Spiel zu zweit Spielen spielbar. 
 Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
 Das Spiel hat zudem ein GUI (Graphical User Interface), 
-welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\ref{img:gameInProgress}.\\
+welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\footnote{\ref{img:gameInProgress}, Screenshot aus dem Spiel}.\\
 Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} 
 kollaboriert. Da es sich hier um ein Projekt von Studenten handelt, sind mehrere Fehler vorhanden.
+\subsection{Psychologische Betrachtung}
+Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen\footfullcite[p.10]{myers2004art}.
+Tatsächlich werden Tests jedoch verwendet um Errors zu finden und fehlverhalten im Vorhinein zu verringern.
+Auch hier im Projekt waren die bereits existieren Tests eher minimal und testen vor allem die Hauptszenarios. 
+Vor allem explizite Logik ist noch ungetestet.
+\subsection{Ökonomische Betrachtung}
 
 
 
@@ -130,13 +136,12 @@ Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt.
 So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
 Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
 Hierfür wird im Projekt eine eigene Methode verwendet.
-\subsection{Psychologische und ökonomische Betrachtung}
-Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen\cite{myers2004art}.
+
 \section{Nötige Anpassungen}
 Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
 da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
 Im vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
-Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\ref{gph:startProjectLayout}.\\
+Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
 Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
 Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
 Nun kann das Projekt einfach über %\mintinline{shell}|
