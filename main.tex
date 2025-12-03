@@ -12,7 +12,8 @@
 \usepackage{fancyhdr}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
-\addbibresource{references.bib}
+% Bibliography file: updated to use `main.bib` (contains your entries)
+\addbibresource{main.bib}
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
 
@@ -103,12 +104,16 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, 
 jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. 
 Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
+Die Art und Weise 
+
+
 \par}
 
 \chapter{Aufbau}
 \section{Testobjekt}
 Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul OOP (Objektorientierte Programmierung). 
-Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. Dieses Spiel zu zweit Spielen spielbar. 
+Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. 
+Dieses Spiel zu zweit Spielen spielbar. 
 Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
 Das Spiel hat zudem ein GUI (Graphical User Interface), 
 welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\ref{img:gameInProgress}.\\
@@ -119,9 +124,14 @@ kollaboriert. Da es sich hier um ein Projekt von Studenten handelt, sind mehrere
 
 
 \section{Konzept der Tests}
-Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. Die Vorgehensweise ist wie folgt.
-Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
-Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. Hierfür wird im Projekt eine eigene Methode verwendet.
+Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
+Die Vorgehensweise ist wie folgt.
+Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. 
+So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
+Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
+Hierfür wird im Projekt eine eigene Methode verwendet.
+\subsection{Psychologische und ökonomische Betrachtung}
+Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen\cite{myers2004art}.
 \section{Nötige Anpassungen}
 Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
 da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
@@ -138,7 +148,8 @@ Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
 \chapter{Durchführung}
 \section{Unit Tests}
 \section{Integration Tests}
-\section{UI Tests}
+\section{System Testing}
+\section{Acceptance Testing}
 
 \chapter{Probleme des Projektes}
 \section{Behobene Probleme}
@@ -198,6 +209,7 @@ Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
 
 \end{appendices}
 
+\printbibliography
 
 
 \end{document}
