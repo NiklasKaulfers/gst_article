@@ -9,10 +9,12 @@
 \usepackage{csquotes}
 \usepackage{dirtree}
 \usepackage{hyperref}
+\usepackage{fancyhdr}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
 \addbibresource{references.bib}
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
 
 
 % -------------------------------------------------------
@@ -74,7 +76,22 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 }
 \makeatother
 
+
+\fancypagestyle{plain}{%
+    % Links/rechts leer
+    \fancyhead[L]{}
+    \fancyhead[R]{}
+
+    \fancyhead[C]{%
+        \includegraphics[height=1.5cm]{LOGO_HSZG_SUBLINE_GRANIT_ICON_ONLY.png}%
+    }
+    \renewcommand{\headrulewidth}{0pt}
+}
+
 \begin{document}
+\pagestyle{fancy}
+
+\setlength{\headheight}{47pt}
 
 \maketitle
 
@@ -112,7 +129,11 @@ Im vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbess
 Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\ref{gph:startProjectLayout}.\\
 Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
 Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
-Nun kann das Projekt einfach über \mintinline{shell}|gradle run|
+Nun kann das Projekt einfach über %\mintinline{shell}|
+gradle run
+%|
+ausgeführt werden.
+Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
 
 \chapter{Durchführung}
 \section{Unit Tests}
