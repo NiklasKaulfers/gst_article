@@ -10,6 +10,7 @@
 \usepackage{dirtree}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{array}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
 % Bibliography file: updated to use `main.bib` (contains your entries)
@@ -143,6 +144,10 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \chapter{Planung}
 \section{Arten von Tests}
+\section{Qualitätsplanung}
+    Um eine hohe Qualität der Tests sicherzustellen sollten gewisse Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite{baresi2006introduction}.
+
+
 \section{Konzept der Tests}
     Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
     Die Vorgehensweise ist wie folgt.
@@ -150,6 +155,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
     Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
     Hierfür wird im Projekt eine eigene Methode verwendet.
+
 
 
 \chapter{Durchführung}
@@ -210,6 +216,37 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
         .2 VierGewinnt.jar.
         .2 win4.jar.
         }
+    \end{figure}
+    \newpage
+    \begin{figure}
+        \caption{Planung der Tests (nach \fullcite[pp.93]{baresi2006introduction} ) }\label{gph:testQualityPlan}
+        \begin{center}
+            \begin{tabular}{  | c | c | }
+                \hline
+                Test Items & blah \\
+                \hline
+                Features to be tested & blah \\
+                \hline
+                Features not to be tested & blah \\
+                \hline
+                Approach & blah \\
+                \hline
+                Pass/Fail cirteria & blah \\
+                \hline 
+                Suspension and resumption criteria & blah \\
+                \hline
+                Risks and contingencies & blah \\
+                \hline
+                Deliverables & blah \\
+                \hline 
+                Tasks \& Schedule & blah \\
+                \hline 
+                Staff \& responsibilities & blah \\
+                \hline 
+                Environment needs & blah \\
+                \hline
+            \end{tabular}
+        \end{center}
     \end{figure}
 
 
