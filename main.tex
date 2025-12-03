@@ -79,14 +79,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 
 \fancypagestyle{plain}{%
-    % Links/rechts leer
-    \fancyhead[L]{}
-    \fancyhead[R]{}
-
     \fancyhead[C]{%
         \includegraphics[height=1.5cm]{LOGO_HSZG_SUBLINE_GRANIT_ICON_ONLY.png}%
     }
-    \renewcommand{\headrulewidth}{0pt}
 }
 
 \begin{document}
@@ -101,54 +96,61 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \chapter{Einleitung}
 {
-Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, 
-jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. 
-Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
-Die Art und Weise 
-
-
+    Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, 
+    jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. 
+    Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
 \par}
 
 \chapter{Aufbau}
 \section{Testobjekt}
-Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul OOP (Objektorientierte Programmierung). 
-Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. 
-Dieses Spiel zu zweit Spielen spielbar. 
-Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
-Das Spiel hat zudem ein GUI (Graphical User Interface), 
-welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\footnote{\ref{img:gameInProgress}, Screenshot aus dem Spiel}.\\
-Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} 
-kollaboriert. Da es sich hier um ein Projekt von Studenten handelt, sind mehrere Fehler vorhanden.
+    Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels iib23 aus dem Modul OOP (Objektorientierte Programmierung). 
+    Es handelt sich hierbei um eine Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. 
+    Dieses Spiel zu zweit Spielen spielbar. 
+    Das Ziel ist es jeweils 4 der eigenen Steine in einer Reihe zu platzieren und mit eigenen Steinen verhindern, dass der Gegner dasselbe tut.\\
+    Die Studenten des Moduls wurden im Rahmen des Moduls in verschiedene Teams aufgeteilt um das Projekt gemeinsam anzufertigen.
+    Die Teams waren Projektmanagment, Backend, Frontend und Testing (Ich war Teil des Projektmanagmentteams). 
+    Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
+    Das Spiel hat zudem ein GUI (Graphical User Interface), 
+    welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\footnote{\ref{img:gameInProgress}, Screenshot aus dem Spiel}.\\
+    Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} kollaboriert.
+    Alle im Rahmen dieser Arbeit erbrachten Leistungen sind in dieser GitHub-Repository zu finden.
 \subsection{Psychologische Betrachtung}
-Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen\footfullcite[p.10]{myers2004art}.
-Tatsächlich werden Tests jedoch verwendet um Errors zu finden und fehlverhalten im Vorhinein zu verringern.
-Auch hier im Projekt waren die bereits existieren Tests eher minimal und testen vor allem die Hauptszenarios. 
-Vor allem explizite Logik ist noch ungetestet.
+    Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen\footfullcite[p.10]{myers2004art}.
+    Tatsächlich werden Tests jedoch verwendet um Errors zu finden und fehlverhalten der Software im Vorhinein zu verringern.
+    Auch hier im Projekt waren die bereits existieren Tests eher minimal und testen vor allem die Hauptszenarios. 
+    Vor allem explizite Logik ist noch ungetestet.
 \subsection{Ökonomische Betrachtung}
+    Während im ökonomischen Sinn meist die Gesamtkosten betrachtet werden, ist in dieser Arbeit die Zeit von größerer Bedeutung.
+    Rahmen des Projektes stellt das Wintersemester 2025/26.\\
+    Die Tests müssen deswegen in einem sehr gerigem Zeitrahmen gerfertigt werden.\\
+    Das Projekt war ein Teil eines Hochschulmoduls, somit waren die Ressourcen stark begrenzt. 
+    Auch hierzu anzumerken ist, dass es sich um ein Modul aus dem zweiten Semester handelt, 
+    weswegen auch die Erfahrungen der beteiligten noch nicht ausgereift waren.
+
 
 
 
 
 \section{Konzept der Tests}
-Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
-Die Vorgehensweise ist wie folgt.
-Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. 
-So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
-Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
-Hierfür wird im Projekt eine eigene Methode verwendet.
+    Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
+    Die Vorgehensweise ist wie folgt.
+    Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. 
+    So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
+    Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
+    Hierfür wird im Projekt eine eigene Methode verwendet.
 
 \section{Nötige Anpassungen}
-Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
-da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
-Im vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
-Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
-Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
-Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
-Nun kann das Projekt einfach über %\mintinline{shell}|
-gradle run
-%|
-ausgeführt werden.
-Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
+    Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
+    da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
+    Im vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
+    Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
+    Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
+    Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
+    Nun kann das Projekt einfach über %\mintinline{shell}|
+    gradle run
+    %|
+    ausgeführt werden.
+    Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
 
 \chapter{Durchführung}
 \section{Unit Tests}
@@ -165,51 +167,50 @@ Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
 \begin{appendices}
 \chapter{Grafiken}
 
-\begin{wrapfigure}{r}{\linewidth}
-\caption{Bild des Spiels}\label{img:gameInProgress}
-\includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
-\end{wrapfigure}
+    \begin{wrapfigure}{r}{\linewidth}
+        \caption{Bild des Spiels}\label{img:gameInProgress}
+        \includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
+    \end{wrapfigure}
 
-\begin{figure}
-\caption{Projektstruktur vor Verbesserungen (Einstiegspunkt in rot)}\label{gph:startProjectLayout}
-\dirtree{%
-.1 VierGewinnt/.
-.2 lib/.
-.3 junit-platform-console-standalone.
-.2 res/.
-.3 SpielerVsComputer.png.
-.3 SpielerVsSpieler.png.
-.2 src/.
-.3 api/.
-.4 BoardInterface.java.
-.4 BoardTestInterface.java.
-.4 TileInterface.java.
-.3 gui/.
-.4 entity/.
-.5 BordersForCircle.java.
-.5 Circle.java.
-.4 frames/.
-.5 EndFrame.java.
-.5 MainPanel.java.
-.5 OptionsFrame.java.
-.5 StartFrame.java.
-.4 handler/.
-.5 MouseHandler.java.
-.4 main/.
-.5 \textcolor{red}{App}.
-.3 logic/.
-.4 Board.java.
-.4 Tile.java.
-.3 test/.
-.4 GameTest.java.
-.2 {.gitignore}.
-.2 README.md.
-.2 TEST.md.
-.2 VierGewinnt.jar.
-.2 win4.jar.
-}
-
-\end{figure}
+    \begin{figure}
+        \caption{Projektstruktur vor Verbesserungen (Einstiegspunkt in rot)}\label{gph:startProjectLayout}
+        \dirtree{%
+        .1 VierGewinnt/.
+        .2 lib/.
+        .3 junit-platform-console-standalone.jar.
+        .2 res/.
+        .3 SpielerVsComputer.png.
+        .3 SpielerVsSpieler.png.
+        .2 src/.
+        .3 api/.
+        .4 BoardInterface.java.
+        .4 BoardTestInterface.java.
+        .4 TileInterface.java.
+        .3 gui/.
+        .4 entity/.
+        .5 BordersForCircle.java.
+        .5 Circle.java.
+        .4 frames/.
+        .5 EndFrame.java.
+        .5 MainPanel.java.
+        .5 OptionsFrame.java.
+        .5 StartFrame.java.
+        .4 handler/.
+        .5 MouseHandler.java.
+        .4 main/.
+        .5 \textcolor{red}{App.java}.
+        .3 logic/.
+        .4 Board.java.
+        .4 Tile.java.
+        .3 test/.
+        .4 GameTest.java.
+        .2 {.gitignore}.
+        .2 README.md.
+        .2 TEST.md.
+        .2 VierGewinnt.jar.
+        .2 win4.jar.
+        }
+    \end{figure}
 
 
 \end{appendices}
