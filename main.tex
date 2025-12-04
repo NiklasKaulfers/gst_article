@@ -172,10 +172,11 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \begin{appendices}
 \chapter{Grafiken}
-    \begin{wrapfigure}{r}{\linewidth}
+    \begin{figure}
         \caption{Bild des Spiels}\label{img:gameInProgress}
         \includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
-    \end{wrapfigure}
+    \end{figure}
+    \newpage
     \begin{figure}
         \caption{Projektstruktur vor Verbesserungen (Einstiegspunkt in rot)}\label{gph:startProjectLayout}
         \dirtree{%
@@ -216,8 +217,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
         }
     \end{figure}
     \newpage
+\chapter{Tabellen}
     \begin{figure}
-        \caption{Planung der Tests (nach \fullcite[pp.93]{baresi2006introduction})}\label{gph:testQualityPlan}
+        \caption{Planung der Tests für Board.java (nach \fullcite[pp.93]{baresi2006introduction})}\label{gph:testQualityPlan}
         \begin{center}
             \begin{tabular}{ | c | c | }
                 \hline
@@ -227,28 +229,34 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
                 \hline
                 Features not to be tested & Setters/Getters \\
                 \hline
-                Approach & Unit Tests mit Grenzwerten oder \\
+                Approach & \makecell{Unit Tests mit Grenzwerten oder\\
+                    Äquivalenzklassen für zu umfangreichen Code\\
+                    Integration Tests für einen Spielablauf mit Use Case\\
+                    KI-basiertes Testen für höhere Effizienz bei redundanten Fällen}\\
                 \hline
-                Pass/Fail cirteria & Alle Funktionen verhalten sich wie erwartet \\
+                Pass/Fail cirteria & \makecell{Alle Funktionen verhalten sich wie erwartet\\
+                    Fail bei unter 100\% Success}\\
                 \hline 
                 Suspension and resumption criteria & 
-                    \makecell{Codequalität zu niedrig bzw unlesbar:\\Codeverbesserungen sind umgesetzt}
-                    \newline
-                    \makecell{Kritischer Error/Crash:\\Fix des kritischen Errors}
+                    \makecell{Codequalität zu niedrig bzw unlesbar:\\
+                    Codeverbesserungen sind umgesetzt\\ \\
+                    Kritischer Error/Crash:\\
+                    Fix des kritischen Errors}
                     \\
                 \hline
                 Risks and contingencies & Zeitliche Begrenzungen \\
                 \hline
-                Deliverables & blah \\
+                Deliverables & Bugs und generelle QA \\
                 \hline 
-                Tasks \& Schedule & blah \\
+                Tasks \& Schedule & Zeit bis Februar 2025 \\
                 \hline 
                 Staff \& responsibilities & \makecell{Niklas Kaulfers (Umsetzung),\\iib23 (Bereitstellung des Projekts und Softwareentwicklung)} \\
                 \hline 
-                Environment needs & JUnit, Java correto 23 \\
+                Environment needs & JUnit, Java correto 23, IntelliJ IDEA \\
                 \hline
             \end{tabular}
         \end{center}
     \end{figure}
+    \newpage
 \end{appendices}
 \printbibliography\end{document}
