@@ -10,10 +10,10 @@
 \usepackage{dirtree}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{makecell}
 \usepackage{array}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
-% Bibliography file: updated to use `main.bib` (contains your entries)
 \addbibresource{main.bib}
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
@@ -31,7 +31,7 @@
 Dozent: Prof.\ Dr.\ Matthias Längrich}
 % Hochschule + Fakultät
 \newcommand{\hochschule}{
-\includegraphics[height=2.5cm]{LOGO_HSZG_SUBLINE_GRANIT.png}\\[5mm]   % Logo der HSZG einfügen
+\includegraphics[height=2.5cm]{LOGO_HSZG_SUBLINE_GRANIT.png}\\[5mm]
 Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 }
 
@@ -99,7 +99,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 {
     Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, 
     jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. 
-    Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
+    Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.\\
+    Im Verlauf der Arbeit sind \underline{unterstrichene} und \textit{kursive} Textabschnitte. 
+    \underline{Unterstrichene} sind links und \textit{kursive} shell anweisungen. 
 \par}
 
 \chapter{Aufbau}
@@ -136,16 +138,14 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
     Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
     Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
-    Nun kann das Projekt einfach über %\mintinline{shell}|
-    gradle run
-    %|
-    ausgeführt werden.
-    Auch sämtliche Tests sind mit gradle test somit leichter zugänglich.
+    Nun kann das Projekt einfach über \textit{gradle run} ausgeführt werden.
+    Auch sämtliche Tests sind mit \textit{gradle test} somit leichter zugänglich.
 
 \chapter{Planung}
 \section{Arten von Tests}
 \section{Qualitätsplanung}
-    Um eine hohe Qualität der Tests sicherzustellen sollten gewisse Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite{baresi2006introduction}.
+    Um eine hohe Qualität der Tests sicherzustellen sollten gewisse Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite[pp.93]{baresi2006introduction}.
+    Eine solche Qualitätsplanung wurde auch hier vorgenommen\footnote{\ref{gph:testQualityPlan}, Qualitätsplanung}.
 
 
 \section{Konzept der Tests}
@@ -172,12 +172,10 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \begin{appendices}
 \chapter{Grafiken}
-
     \begin{wrapfigure}{r}{\linewidth}
         \caption{Bild des Spiels}\label{img:gameInProgress}
         \includegraphics[width=\linewidth]{screenshot_game_inprogress.png}
     \end{wrapfigure}
-
     \begin{figure}
         \caption{Projektstruktur vor Verbesserungen (Einstiegspunkt in rot)}\label{gph:startProjectLayout}
         \dirtree{%
@@ -219,40 +217,38 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     \end{figure}
     \newpage
     \begin{figure}
-        \caption{Planung der Tests (nach \fullcite[pp.93]{baresi2006introduction} ) }\label{gph:testQualityPlan}
+        \caption{Planung der Tests (nach \fullcite[pp.93]{baresi2006introduction})}\label{gph:testQualityPlan}
         \begin{center}
-            \begin{tabular}{  | c | c | }
+            \begin{tabular}{ | c | c | }
                 \hline
-                Test Items & blah \\
+                Test Items & Board.java \\
                 \hline
-                Features to be tested & blah \\
+                Features to be tested & placeStone, computer algorithm, save/load, winning \\
                 \hline
-                Features not to be tested & blah \\
+                Features not to be tested & Setters/Getters \\
                 \hline
-                Approach & blah \\
+                Approach & Unit Tests mit Grenzwerten oder \\
                 \hline
-                Pass/Fail cirteria & blah \\
+                Pass/Fail cirteria & Alle Funktionen verhalten sich wie erwartet \\
                 \hline 
-                Suspension and resumption criteria & blah \\
+                Suspension and resumption criteria & 
+                    \makecell{Codequalität zu niedrig bzw unlesbar:\\Codeverbesserungen sind umgesetzt}
+                    \newline
+                    \makecell{Kritischer Error/Crash:\\Fix des kritischen Errors}
+                    \\
                 \hline
-                Risks and contingencies & blah \\
+                Risks and contingencies & Zeitliche Begrenzungen \\
                 \hline
                 Deliverables & blah \\
                 \hline 
                 Tasks \& Schedule & blah \\
                 \hline 
-                Staff \& responsibilities & blah \\
+                Staff \& responsibilities & \makecell{Niklas Kaulfers (Umsetzung),\\iib23 (Bereitstellung des Projekts und Softwareentwicklung)} \\
                 \hline 
-                Environment needs & blah \\
+                Environment needs & JUnit, Java correto 23 \\
                 \hline
             \end{tabular}
         \end{center}
     \end{figure}
-
-
 \end{appendices}
-
-\printbibliography
-
-
-\end{document}
+\printbibliography\end{document}
