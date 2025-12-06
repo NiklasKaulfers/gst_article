@@ -84,10 +84,12 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     \fancyhead[C]{%
         \includegraphics[height=1.5cm]{LOGO_HSZG_SUBLINE_GRANIT_ICON_ONLY.png}%
     }
+    \renewcommand{\footrulewidth}{0.4pt}
 }
 
 \begin{document}
-\pagestyle{fancy}
+\pagestyle{plain}
+\pagenumbering{gobble}
 
 \setlength{\headheight}{47pt}
 
@@ -95,6 +97,11 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \tableofcontents
 
+\pagenumbering{arabic}
+
+\fancyfoot[L]{\sffamily Kaulfers}
+\fancyfoot[C]{\sffamily Belegarbeit}
+\fancyfoot[R]{\sffamily\thepage}
 
 \chapter{Einleitung}
 {
