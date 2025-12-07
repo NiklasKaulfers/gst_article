@@ -175,7 +175,12 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Diese Planung ist nur für Board vorgenommen wurden um in einem sinngemäßen Rahmen zu bleiben.  
 
 \chapter{Durchführung}
-\section{Unit Tests}
+    Zur Durchführung wird jeweils individuell ein Testfall detailiert erläutert.
+\section{Unit Tests - Erstellung eines Speichercodes}
+    Das Spiel hat eine Speicherlogik. 
+    Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
+    Dieser funktioniert wie folgt:\verb!{playerTurn}a{rows}a{columns}a{isFull}aB{boardLayout}!.
+    Dieser String wird dann in einem txt-File gespeichert und kann beim neustarten des Spiels aufgerufen werden.
 \section{Integration Tests}
 \section{System Testing}
 \section{Acceptance Testing}
