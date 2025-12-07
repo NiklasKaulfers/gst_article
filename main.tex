@@ -176,12 +176,16 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \chapter{Durchführung}
     Zur Durchführung wird jeweils individuell ein Testfall detailiert erläutert.
-\section{Unit Tests - Erstellung eines Speichercodes}
+\section{Unit Tests - ist das Ende einer Spalte erreicht}
+    Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion isTopOfColumn.
+    Diese überprüft, ob die aktuelle Menge an Steinen in einer Spalte die Höhe des Spielfelds erreicht hat.\\
+\section{Integration Tests - Erstellung und Abspeicherung eines Speichercodes}
     Das Spiel hat eine Speicherlogik. 
     Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
     Dieser funktioniert wie folgt:\verb!{playerTurn}a{rows}a{columns}a{isFull}aB{boardLayout}!.
     Dieser String wird dann in einem txt-File gespeichert und kann beim neustarten des Spiels aufgerufen werden.
-\section{Integration Tests}
+    Für den Test ist es wichtig, dass sich das txt-File ordentlich öffnet und ausliest.
+    Zudem muss getestet werden, ob der Speichercode den Spielstand ordnungsgemäß darstellt.\\
 \section{System Testing}
 \section{Acceptance Testing}
 
