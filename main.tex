@@ -7,6 +7,7 @@
 \usepackage{geometry}
 \usepackage{minted}
 \usepackage{xcolor}
+\usepackage{tikz}
 \usepackage{csquotes}
 \usepackage{dirtree}
 \usepackage{hyperref}
@@ -176,9 +177,45 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \chapter{Durchführung}
     Zur Durchführung wird jeweils individuell ein Testfall detailiert erläutert.
-\section{Unit Tests - ist das Ende einer Spalte erreicht}
-    Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion isTopOfColumn.
-    Diese überprüft, ob die aktuelle Menge an Steinen in einer Spalte die Höhe des Spielfelds erreicht hat.\\
+\section{Unit Tests - verbleibende Plätze in einer Spalte}
+    Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
+    Diese überprüft, wieviele Plätze noch in einer Spalte frei sind.\\
+    Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
+    Mit \texttt{isTopOfColumn} ist ein boolean-Wert als Ausgabe zu erwarten.
+    Jedoch ist der tatsächliche Rückgabewert vom Typen int.\\
+    Zur Implementierung der Tests müssen zuerst Grenzwerte gesetzt werden, in welchen sich die Funktion wie verhalten soll.
+    Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung \ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
+    Daraus folgt, dass Tests für die Inputs -1, 0, 6, 7 durchgeführt werden müssen.
+    Die Funktion ist nicht nur von der tatsächlichen Spalte abhängig, sondern auch von der Anzahl der platzierten Steine.
+    Somit wird auch getestet, ob die richtigen Werte innerhalb des gültigen Bereichs zurückgegeben werden.
+    Um hier das genaue Verhalten zu testen fehlt im Code eine Möglichkeit, um Steine über oder unter dem Spielfeld zu plazieren.
+    \begin{figure}[h!]
+    \centering
+        \begin{tikzpicture}[>=stealth, thick]
+
+            \draw[->] (-3,0) -- (9.5,0) node[right]{Spalte};
+
+            \draw[ultra thick] (0,0.2) -- (0,-0.2) node[above] at (0,0.1) {Untergrenze};
+            \draw[ultra thick] (6,0.2) -- (6,-0.2) node[above] at (6,0.1) {Obergrenze};
+            
+            \foreach \x in {-3,-2,-1,0,1,2,3,4,5,6,7,8,9} {
+                \draw (\x,0.15) -- (\x,-0.15) node[below]{\x};
+            }
+
+            \draw[very thick, green!60!black] (0,0) -- (6,0);
+
+            \node[above] at (3,0.1) {Gültiger Bereich};
+
+        \end{tikzpicture}
+        \caption{Grenzwerte der Inputs von \texttt{isTopOfColumn()} (im Fall des Boardlayouts 7x7)}
+        \label{gph:validInputIsTopOfColumn}
+    \end{figure}\\
+    In der Durchführung der Tests stellt sich heraus, dass das Verhalten unterhalb der Untergrenze und überhalb der Obergrenze nicht definiert ist.
+    Somit kommt es zu einer \texttt{ArrayIndexOutOfBoundsException} für beide Fälle.
+    Da es keine Möglichkeit gibt, die Steine so zu platzieren, dass in einer Spalte mehr Steine liegen als vorgesehen, ist es auch nicht möglich das Verhalten in diesem Fall zu testen.
+    Für alle anderen Fälle verhält sich die Funktion wie vorgesehen.
+
+    
 \section{Integration Tests - Erstellung und Abspeicherung eines Speichercodes}
     Das Spiel hat eine Speicherlogik. 
     Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
