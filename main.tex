@@ -109,9 +109,11 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 {
     Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, 
     jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. 
-    Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.\\
+    Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
+    Es wird tiefer auf spezielle Testfälle eingegangen und allgemeine Testvorgehensweisen werden angewandt.\\
     Im Verlauf der Arbeit sind \underline{unterstrichene} und \textit{kursive} Textabschnitte zu finden. 
     \underline{Unterstrichene} sind links und \textit{kursive} shell anweisungen. 
+    Teile des Quellcodes, welcher in der Ausarbeitung dieser Arbeit entstand ist hingegen im Anhang\ \ref{chp:Code} zu finden.
 \par}
 
 \chapter{Testobjekt}
@@ -159,33 +161,49 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
     Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
     Nun kann das Projekt einfach über \textit{gradle run} ausgeführt werden.
-    Auch sämtliche Tests sind mit \textit{gradle test} somit leichter zugänglich.
+    Auch sämtliche Tests sind mit \textit{gradle test} somit leichter zugänglich.\\
+    Alle diese Anpassungen geschahen vor einer Umsetzung der Tests um die Entwicklungsumgebung angenehmer zu gestalten.
 \section{Eignung zum Testen}
-    Trotz der verhältnismäßig kleinen Größe des Projektes eignet es sich sehr gut zum Testen. 
-    Die Vorgehensweise ist wie folgt.
-    Zuerst werden Unit-Tests von den wichtigesten Teilen der Software durchgeführt. 
-    So beispielsweise die Methode des platzieren eines Steines auf dem Spielfeld.
-    Auch andere Methoden wie die Erstellung von Speicherdaten kann überprüft werden. 
-    Hierfür wird im Projekt eine eigene Methode verwendet.
+    Da das Projekt aus mehreren verschieden komplexen Codeteilen besteht ist es auch gut zum Testen geeignet. 
+    Auch von nutzen hier ist, dass es ein eigenes UI gibt, an welchem auch Tests durchgeführt werden können.\\
+    Problematisch hingegen ist, dass das Projekt nicht weiter in Bearbeitung ist und die Tests langfristig eher von geringem Nutzen sein werden.
+    Da diese Arbeit als Teil eines Hochschulmoduls zum Lernen angefertigt wurde, ist das im Hinblick auf die Fähigkeit dieses Projekt zu Testen jedoch irrelevant.
+    Einen positiven langfristigen Einfluss kann hingegen für Studenten existieren, welche zu alten Projekten zurückkehren und ihre Kompetenzen testen wollen.
+
 
 
 \chapter{Planung}
-\section{Arten von Tests}
-\section{Qualitätsplanung}
-    Um eine hohe Qualität der Tests sicherzustellen sollten gewisse Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite[pp.93]{baresi2006introduction}.
+\section{Testziele}
+    Um die Tests erfolgreich abzuschließen müssen zuerst die Ziele definiert werden. 
+    Hier werden diese vor allem von der Grundsicherung der Funktionalität beeinträchtigt.
+    Das Ziel der Tests in diesem Produkt ist es eine hohe Testcoverage zu haben und auch jeweilige Edgecases abzudecken.
+    Somit soll das Abstürzen des Spieles auf ein Minimum reduziert werden\footfullcite[vgl.][K. 1 S. 12]{expleo}.\\
+    Um eine hohe Qualität der Tests sicherzustellen sollten gewisse Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite[vgl.][S. 93]{baresi2006introduction}.
     Eine solche Qualitätsplanung ist auch hier von Sinn\footnote{\ref{gph:testQualityPlan}, Qualitätsplanung für Board}.
     Diese Planung ist nur für Board vorgenommen wurden um in einem sinngemäßen Rahmen zu bleiben.  
+\section{Qualitätssicherung}
+    Um gute Qualität im Endprodukt zu erhalten muss eine Qualitätssicherung durchgeführt werden. 
+    Diese bezieht sich auf den Entwicklungs- als auch den Testprozess und liegt in der Verantwortung aller Projektbeteiligten\footfullcite[K. 1 S. 23]{expleo}.
+    Im Verlauf des Projektes wurde der Qualitätssicherungsprozess vollständig ignoriert.
+    Daraus kann auch die inkonsistente Codequalität hervorgeleitet werden.
+    So sind Kommentare in sowohl deutsch als auch englisch und einige Codeabschnitte sind deutlich besser lesbar als andere.
+    Somit ist das Projekt langfristig schwer aufrecht zuerhalten und zu erweitern. 
+    Da vor dieser Arbeit nur ein geringes Mass an Testen existierte sind auch viele Fehler unbehoben und in der Entwicklung ignoriert wurden.
+
 
 \chapter{Durchführung}
     Zur Durchführung wird jeweils individuell ein Testfall detailiert erläutert.
-\section{Unit Tests \- verbleibende Plätze in einer Spalte}
+\section{Realisierung}
+    
+\section{dynamische Tests}
+\subsection{Unit Tests - verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wieviele Plätze noch in einer Spalte frei sind.\\
     Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
     Mit \texttt{isTopOfColumn} ist ein boolean-Wert als Ausgabe zu erwarten.
     Jedoch ist der tatsächliche Rückgabewert vom Typen int.\\
     Zur Implementierung der Tests müssen zuerst Grenzwerte gesetzt werden, in welchen sich die Funktion wie verhalten soll.
-    Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung\ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
+    Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung\ \ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
     Daraus folgt, dass Tests für die Inputs -1, 0, 6, 7 durchgeführt werden müssen.
     Die Funktion ist nicht nur von der tatsächlichen Spalte abhängig, sondern auch von der Anzahl der platzierten Steine.
     Somit wird auch getestet, ob die richtigen Werte innerhalb des gültigen Bereichs zurückgegeben werden.
@@ -213,10 +231,10 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     In der Durchführung der Tests stellt sich heraus, dass das Verhalten unterhalb der Untergrenze und überhalb der Obergrenze nicht definiert ist.
     Somit kommt es zu einer \texttt{ArrayIndexOutOfBoundsException} für beide Fälle.
     Da es keine Möglichkeit gibt, die Steine so zu platzieren, dass in einer Spalte mehr Steine liegen als vorgesehen, ist es auch nicht möglich das Verhalten in diesem Fall zu testen.
-    Für alle anderen Fälle verhält sich die Funktion wie vorgesehen\footnote{siehe Code\ref{code:IsTopOfColumnTest}}.
+    Für alle anderen Fälle verhält sich die Funktion wie vorgesehen\footnote{siehe Code\ \ref{code:IsTopOfColumnTest}}.
 
     
-\section{Integration Tests \- Erstellung und Abspeicherung eines Speichercodes}
+\subsection{Integration Tests - Erstellung und Abspeicherung eines Speichercodes}
     Das Spiel hat eine Speicherlogik. 
     Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
     Dieser funktioniert wie folgt:\verb!{playerTurn}a{rows}a{columns}a{isFull}aB{boardLayout}!.
@@ -225,11 +243,15 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Zudem muss getestet werden, ob der Speichercode den Spielstand ordnungsgemäß darstellt.
     Auch ist das Verhalten interssant, für den Fall das kein Speicherstand existiert und versucht wird einen zu laden.\\
     Um dem Ziel von Integration Tests zu folgen sind zwischenwerte und interne Abläufe hier unwichtig.
-    Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.
-    Die Tests hier werden mittels Äquivalenzklassen durchgeführt.
+    Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
+    Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Datein wieder zum ausgangszustand zurückgebracht werden.
+    Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.
+    
 
-\section{System Testing}
-\section{Acceptance Testing}
+\subsection{System Testing}
+\subsection{Acceptance Testing}
+
+\section{statische Tests}
 
 \chapter{Probleme des Projektes}
 \section{Behobene Probleme}
@@ -286,7 +308,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     \newpage
 \chapter{Tabellen}
     \begin{figure}
-        \caption{Planung der Tests für Board.java (nach \fullcite[pp.93]{baresi2006introduction})}\label{gph:testQualityPlan}
+        \caption{Planung der Tests für Board.java (nach \fullcite[S. 93f.]{baresi2006introduction})}\label{gph:testQualityPlan}
         \begin{center}
             \begin{tabular}{ | c | c | }
                 \hline
@@ -325,7 +347,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
         \end{center}
     \end{figure}
     \newpage
-\chapter{Code}
+\chapter{Code}\label{chp:Code}
 \begin{lstlisting}[language=Java, caption={IsTopOfColumnTest.java}, label={code:IsTopOfColumnTest}]
     package test.logic.board;
     
