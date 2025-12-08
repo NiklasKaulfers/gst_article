@@ -16,7 +16,7 @@
 \usepackage{listings}
 \usepackage{array}
 \usepackage[toc,page]{appendix}
-\usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
+\usepackage[backend=biber,style=ieee]{biblatex}
 \addbibresource{main.bib}
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
@@ -102,7 +102,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 \pagenumbering{arabic}
 
 \fancyfoot[L]{\sffamily Kaulfers}
-\fancyfoot[C]{\sffamily Belegarbeit}
+\fancyfoot[C]{\sffamily Belegarbeit GST}
 \fancyfoot[R]{\sffamily\thepage}
 
 \chapter{Einleitung}
@@ -112,7 +112,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
     Es wird tiefer auf spezielle Testfälle eingegangen und allgemeine Testvorgehensweisen werden angewandt.\\
     Im Verlauf der Arbeit sind \underline{unterstrichene} und \textit{kursive} Textabschnitte zu finden. 
-    \underline{Unterstrichene} sind links und \textit{kursive} shell anweisungen. 
+    \underline{Unterstrichene} sind Links und \textit{kursive} Terminalanweisungen. 
     Teile des Quellcodes, welcher in der Ausarbeitung dieser Arbeit entstand ist hingegen im Anhang\ \ref{chp:Code} zu finden.
 \par}
 
@@ -123,7 +123,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Dieses Spiel zu zweit Spielen spielbar. 
     Das Ziel ist es jeweils 4 der eigenen Steine in einer Reihe zu platzieren und mit eigenen Steinen verhindern, dass der Gegner dasselbe tut.\\
     Die Studenten des Moduls wurden im Rahmen des Moduls in verschiedene Teams aufgeteilt um das Projekt gemeinsam anzufertigen.
-    Die Teams waren Projektmanagment, Backend, Frontend und Testing (Ich war Teil des Projektmanagmentteams).
+    Die Teams waren Projektmanagement, Backend, Frontend und Testing (Ich war Teil des Projektmanagementteams).
     Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} kollaboriert.
     Alle im Rahmen dieser Arbeit erbrachten Leistungen sind in dieser GitHub-Repository zu finden.
     Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
@@ -133,9 +133,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Diese sind voneinander logisch in der Ordnerstruktur abgetrennt\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.
     Der api Ordern beinhaltet Interfaces, welche die Logik definieren. 
     Hier gibt es auch ein Interface, welches ausschließlich zum Testen gemacht wurde. 
-    Die Logik implementiert diese Interfaces und versorgt sie mit Funkionalität.
+    Die Logik implementiert diese Interfaces und versorgt sie mit Funktionalität.
     Für ein ordentliches grafisches Display sorgt das Frontend. 
-    Dieses ist im Vergleich zur Logik deutlich bessser Modualisiert und somit auch besser lesbar.
+    Dieses ist im Vergleich zur Logik deutlich besser modularisiert und somit auch besser lesbar.
     Schlussendlich gibt es in dem Projekt bereits Tests, welche im Test-Ordner sind.
     Jedoch waren diese vor dieser Arbeit noch nicht ausgereift.
  
@@ -149,14 +149,14 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 \subsection{Ökonomische Betrachtung}
     Während im ökonomischen Sinn meist die Gesamtkosten betrachtet werden, ist in dieser Arbeit die Zeit von größerer Bedeutung.
     Rahmen des Projektes stellt das Wintersemester 2025/26.\\
-    Die Tests müssen deswegen in einem sehr gerigem Zeitrahmen gerfertigt werden.\\
+    Die Tests müssen deswegen in einem sehr geringem Zeitrahmen gefertigt werden.\\
     Das Projekt war ein Teil eines Hochschulmoduls, somit waren die Ressourcen stark begrenzt. 
     Auch hierzu anzumerken ist, dass es sich um ein Modul aus dem zweiten Semester handelt, 
     weswegen auch die Erfahrungen der beteiligten noch nicht ausgereift waren.
-\section{Nötige Anpassungen}
+\section{Nötige Anpassungen}\label{chp:NecessaryChanges}
     Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
     da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
-    Im vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
+    Im vor hinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
     Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
     Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
     Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
@@ -185,20 +185,27 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Um gute Qualität im Endprodukt zu erhalten muss eine Qualitätssicherung durchgeführt werden. 
     Diese bezieht sich auf den Entwicklungs- als auch den Testprozess und liegt in der Verantwortung aller Projektbeteiligten\footfullcite[K. 1 S. 23]{expleo}.
     Im Verlauf des Projektes wurde der Qualitätssicherungsprozess vollständig ignoriert.
-    Daraus kann auch die inkonsistente Codequalität hervorgeleitet werden.
+    Daraus kann auch die inkonsistente Codequalität herausgeleitet werden.
     So sind Kommentare in sowohl deutsch als auch englisch und einige Codeabschnitte sind deutlich besser lesbar als andere.
-    Somit ist das Projekt langfristig schwer aufrecht zuerhalten und zu erweitern. 
+    Somit ist das Projekt langfristig schwer aufrecht zu erhalten und zu erweitern. 
     Da vor dieser Arbeit nur ein geringes Mass an Testen existierte sind auch viele Fehler unbehoben und in der Entwicklung ignoriert wurden.
 
 
 \chapter{Durchführung}
-    Zur Durchführung wird jeweils individuell ein Testfall detailiert erläutert.
+    Zur Durchführung wird jeweils individuell ein Testfall detailliert erläutert.
 \section{Realisierung}
-    
+    Als Problem stellt sich direkt heraus, dass Testen nicht isoliert durchgeführt werden soll\footfullcite[K. 1 S. 52]{expleo}.
+    Dies ist hier nicht möglich, da keine tatsächliche Entwicklung mehr stattfindet.\\
+    Aufgrund der relativ niedrigen Komplexität ist das Einrichten der Entwicklungs-/Testumgebung verhältnismäßig einfach.
+    Anforderungen des Projektes sind lediglich Java 21 oder höher.
+    Empfohlen wird die IDE IntelliJ IDEA. 
+    Um in der Branch mit gradle zu arbeiten muss auch gradle cli installiert sein.
+    Die Tests werden mit JUnit 5 durchgeführt und können mittels IntelliJ einfach im Code gestartet werden.
+    In der Branch mit gradle ist es einfach, wie in\ \ref{chp:NecessaryChanges}, mit \textit{gradle test} auszuführen.
 \section{dynamische Tests}
 \subsection{Unit Tests - verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
-    Diese überprüft, wieviele Plätze noch in einer Spalte frei sind.\\
+    Diese überprüft, wie viele Plätze noch in einer Spalte frei sind.\\
     Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
     Mit \texttt{isTopOfColumn} ist ein boolean-Wert als Ausgabe zu erwarten.
     Jedoch ist der tatsächliche Rückgabewert vom Typen int.\\
@@ -207,7 +214,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Daraus folgt, dass Tests für die Inputs -1, 0, 6, 7 durchgeführt werden müssen.
     Die Funktion ist nicht nur von der tatsächlichen Spalte abhängig, sondern auch von der Anzahl der platzierten Steine.
     Somit wird auch getestet, ob die richtigen Werte innerhalb des gültigen Bereichs zurückgegeben werden.
-    Um hier das genaue Verhalten zu testen fehlt im Code eine Möglichkeit, um Steine über oder unter dem Spielfeld zu plazieren.
+    Um hier das genaue Verhalten zu testen fehlt im Code eine Möglichkeit, um Steine über oder unter dem Spielfeld zu platzieren.
     \begin{figure}[h!]
     \centering
         \begin{tikzpicture}[>=stealth, thick]
@@ -241,10 +248,10 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Dieser String wird dann in einem txt-File gespeichert und kann beim neustarten des Spiels aufgerufen werden.
     Für den Test ist es wichtig, dass sich das txt-File ordentlich öffnet und ausliest.
     Zudem muss getestet werden, ob der Speichercode den Spielstand ordnungsgemäß darstellt.
-    Auch ist das Verhalten interssant, für den Fall das kein Speicherstand existiert und versucht wird einen zu laden.\\
+    Auch ist das Verhalten interessant, für den Fall das kein Speicherstand existiert und versucht wird einen zu laden.\\
     Um dem Ziel von Integration Tests zu folgen sind zwischenwerte und interne Abläufe hier unwichtig.
     Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
-    Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Datein wieder zum ausgangszustand zurückgebracht werden.
+    Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Dateien wieder zum ausgangszustand zurückgebracht werden.
     Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.
     
 
@@ -323,7 +330,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
                     Integration Tests für einen Spielablauf mit Use Case\\
                     KI-basiertes Testen für höhere Effizienz bei redundanten Fällen}\\
                 \hline
-                Pass/Fail cirteria & \makecell{Alle Funktionen verhalten sich wie erwartet\\
+                Pass/Fail criteria & \makecell{Alle Funktionen verhalten sich wie erwartet\\
                     Fail bei unter 100\% Success}\\
                 \hline 
                 Suspension and resumption criteria & 
