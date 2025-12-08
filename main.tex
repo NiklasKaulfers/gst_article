@@ -203,6 +203,11 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Die Tests werden mit JUnit 5 durchgeführt und können mittels IntelliJ einfach im Code gestartet werden.
     In der Branch mit gradle ist es einfach, wie in\ \ref{chp:NecessaryChanges}, mit \textit{gradle test} auszuführen.
 \section{dynamische Tests}
+    Die dynamischen Softwaretests sind in drei Abschnitte zu unterteilen.
+    Unit tests stellen die Funktionalität eines Moduls sicher und testen nur dieses.
+    Mehrere Module werden im Laufe der Softwareentwicklung aneinandergereiht und verknüpft,
+    um dieses Konstrukt zu Testen werden Integration Tests verwendet.
+    Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}
 \subsection{Unit Tests - verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wie viele Plätze noch in einer Spalte frei sind.\\
@@ -256,7 +261,6 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     
 
 \subsection{System Testing}
-\subsection{Acceptance Testing}
 
 \section{statische Tests}
 
