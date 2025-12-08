@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{makecell}
+\usepackage{listings}
 \usepackage{array}
 \usepackage[toc,page]{appendix}
 \usepackage[backend=biber,style=ieee]{biblatex}  % or style=numeric, authoryear, etc.
@@ -177,14 +178,14 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \chapter{Durchführung}
     Zur Durchführung wird jeweils individuell ein Testfall detailiert erläutert.
-\section{Unit Tests - verbleibende Plätze in einer Spalte}
+\section{Unit Tests \- verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wieviele Plätze noch in einer Spalte frei sind.\\
     Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
     Mit \texttt{isTopOfColumn} ist ein boolean-Wert als Ausgabe zu erwarten.
     Jedoch ist der tatsächliche Rückgabewert vom Typen int.\\
     Zur Implementierung der Tests müssen zuerst Grenzwerte gesetzt werden, in welchen sich die Funktion wie verhalten soll.
-    Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung \ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
+    Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung\ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
     Daraus folgt, dass Tests für die Inputs -1, 0, 6, 7 durchgeführt werden müssen.
     Die Funktion ist nicht nur von der tatsächlichen Spalte abhängig, sondern auch von der Anzahl der platzierten Steine.
     Somit wird auch getestet, ob die richtigen Werte innerhalb des gültigen Bereichs zurückgegeben werden.
@@ -207,22 +208,26 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
             \node[above] at (3,0.1) {Gültiger Bereich};
 
         \end{tikzpicture}
-        \caption{Grenzwerte der Inputs von \texttt{isTopOfColumn()} (im Fall des Boardlayouts 7x7)}
-        \label{gph:validInputIsTopOfColumn}
+        \caption{Grenzwerte der Inputs von \texttt{isTopOfColumn()} (im Fall des Boardlayouts 7x7)}\label{gph:validInputIsTopOfColumn}
     \end{figure}\\
     In der Durchführung der Tests stellt sich heraus, dass das Verhalten unterhalb der Untergrenze und überhalb der Obergrenze nicht definiert ist.
     Somit kommt es zu einer \texttt{ArrayIndexOutOfBoundsException} für beide Fälle.
     Da es keine Möglichkeit gibt, die Steine so zu platzieren, dass in einer Spalte mehr Steine liegen als vorgesehen, ist es auch nicht möglich das Verhalten in diesem Fall zu testen.
-    Für alle anderen Fälle verhält sich die Funktion wie vorgesehen\footnote{vgl.: https://github.com/NiklasKaulfers/VierGewinnt/blob/main/src/test/logic/board/IsTopOfColumnTest.java}.
+    Für alle anderen Fälle verhält sich die Funktion wie vorgesehen\footnote{siehe Code\ref{code:IsTopOfColumnTest}}.
 
     
-\section{Integration Tests - Erstellung und Abspeicherung eines Speichercodes}
+\section{Integration Tests \- Erstellung und Abspeicherung eines Speichercodes}
     Das Spiel hat eine Speicherlogik. 
     Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
     Dieser funktioniert wie folgt:\verb!{playerTurn}a{rows}a{columns}a{isFull}aB{boardLayout}!.
     Dieser String wird dann in einem txt-File gespeichert und kann beim neustarten des Spiels aufgerufen werden.
     Für den Test ist es wichtig, dass sich das txt-File ordentlich öffnet und ausliest.
-    Zudem muss getestet werden, ob der Speichercode den Spielstand ordnungsgemäß darstellt.\\
+    Zudem muss getestet werden, ob der Speichercode den Spielstand ordnungsgemäß darstellt.
+    Auch ist das Verhalten interssant, für den Fall das kein Speicherstand existiert und versucht wird einen zu laden.\\
+    Um dem Ziel von Integration Tests zu folgen sind zwischenwerte und interne Abläufe hier unwichtig.
+    Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.
+    Die Tests hier werden mittels Äquivalenzklassen durchgeführt.
+
 \section{System Testing}
 \section{Acceptance Testing}
 
@@ -320,5 +325,147 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
         \end{center}
     \end{figure}
     \newpage
+\chapter{Code}
+\begin{lstlisting}[language=Java, caption={IsTopOfColumnTest.java}, label={code:IsTopOfColumnTest}]
+    package test.logic.board;
+    
+    import api.BoardTestInterface;
+    import logic.Board;
+    import org.junit.jupiter.api.Assertions;
+    import org.junit.jupiter.api.BeforeEach;
+    import org.junit.jupiter.api.DisplayName;
+    import org.junit.jupiter.api.Test;
+    
+    public class IsTopOfColumnTest {
+    
+        BoardTestInterface board;
+    
+        @BeforeEach
+        void setUp() {
+            board = new Board();
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column 1 has 3 stones placed THEN return 3"
+        )
+        void halfwayFullColumnTest() {
+            board.placeStone(1);
+            board.placeStone(1);
+            board.placeStone(1);
+    
+            Assertions.assertEquals(
+                3,
+                board.isTopOfColumn(1)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column 1 has 6 stones THEN return 0"
+        )
+        void fullColumnTest() {
+            for (int i = 0; i < 6; i++) {
+                board.placeStone(1);
+            }
+    
+            Assertions.assertEquals(
+                0,
+                board.isTopOfColumn(1)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column 1 has 0 stones THEN return 6"
+        )
+        void emptyColumnTest() {
+            Assertions.assertEquals(
+                6,
+                board.isTopOfColumn(1)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "GIVEN a 10x10 board WHEN column 10 has 0 "
+          + "stones THEN return 10"
+        )
+        void emptyColumn10Test() {
+            board = new Board(10, 10);
+    
+            Assertions.assertEquals(
+                10,
+                board.isTopOfColumn(9)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "GIVEN a 10x10 board WHEN column 1 has 10 "
+          + "stones THEN return 0"
+        )
+        void fullColumn10Test() {
+            board = new Board(10, 10);
+    
+            for (int i = 0; i < 10; i++) {
+                board.placeStone(1);
+            }
+    
+            Assertions.assertEquals(
+                0,
+                board.isTopOfColumn(1)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column -1 is called THEN do nothing"
+        )
+        void outOfBoundsTooLowTest() {
+            Assertions.assertEquals(
+                0,
+                board.isTopOfColumn(-1)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column 7 is called THEN do nothing"
+        )
+        void outOfBoundsTooHighTest() {
+            Assertions.assertEquals(
+                0,
+                board.isTopOfColumn(7)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column 0 is called and no stones are "
+          + "placed THEN return 6"
+        )
+        void emptyColumn0Test() {
+            Assertions.assertEquals(
+                6,
+                board.isTopOfColumn(0)
+            );
+        }
+    
+        @Test
+        @DisplayName(
+            "WHEN column 6 is called and no stones are "
+          + "placed THEN return 6"
+        )
+        void emptyColumn6Test() {
+            Assertions.assertEquals(
+                6,
+                board.isTopOfColumn(6)
+            );
+        }
+    }
+    \end{lstlisting}
+    
+    
 \end{appendices}
 \printbibliography\end{document}
