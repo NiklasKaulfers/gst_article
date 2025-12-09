@@ -19,6 +19,7 @@
 \usepackage[backend=biber,style=ieee]{biblatex}
 \addbibresource{main.bib}
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usetikzlibrary{shapes.geometric, arrows}
 
 
 
@@ -88,6 +89,13 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     }
     \renewcommand{\footrulewidth}{0.4pt}
 }
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \begin{document}
 \pagestyle{plain}
@@ -207,7 +215,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Unit tests stellen die Funktionalität eines Moduls sicher und testen nur dieses.
     Mehrere Module werden im Laufe der Softwareentwicklung aneinandergereiht und verknüpft,
     um dieses Konstrukt zu Testen werden Integration Tests verwendet.
-    Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}
+    Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}.
 \subsection{Unit Tests - verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wie viele Plätze noch in einer Spalte frei sind.\\
@@ -257,7 +265,30 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Um dem Ziel von Integration Tests zu folgen sind zwischenwerte und interne Abläufe hier unwichtig.
     Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
     Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Dateien wieder zum ausgangszustand zurückgebracht werden.
-    Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.
+    Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.\\
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[node distance=3cm]
+            \node (start) [startstop] {Spiel starten};
+            \node (user1) [decision, below of=start] {Spieleraktion};
+            \node (pressSave) [process, right of=user1, xshift=2cm] {Speicherknopf};
+            \node (play) [process, below of=user1] {Aktionen auf dem Spielfeld};
+            \node (loadGame) [process, left of=user1, xshift=-2cm] {Ladenknopf};
+            \node (createSavecode) [process, below of=pressSave] {erstellen Speicherdatei};
+            \node (accessSavecode) [process, below of=loadGame] {laden der Speicherdatei};
+            \draw [arrow] (start) -- node {} (user1);
+            \draw [arrow] (user1) -- (pressSave);
+            \draw [arrow] (createSavecode) -- (user1);
+            \draw [arrow] (pressSave) -- (createSavecode);
+            \draw [arrow] (user1) -- (play);
+            \draw [arrow] (play) -- (user1);
+            \draw [arrow] (user1) -- (loadGame);
+            \draw [arrow] (loadGame) -- (accessSavecode);
+            \draw [arrow] (accessSavecode) -- (user1);
+        \end{tikzpicture}
+        \caption{Ablauf des Integration Tests}\label{gph:IntegrationTest}
+    \end{figure}
+
     
 
 \subsection{System Testing}
