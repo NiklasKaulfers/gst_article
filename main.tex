@@ -94,8 +94,8 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black]
 
 \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
 \tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black]
 
 \begin{document}
 \pagestyle{plain}
@@ -272,9 +272,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
             \node (start) [startstop] {Spiel starten};
             \node (user1) [decision, below of=start] {Spieleraktion};
             \node (pressSave) [process, right of=user1, xshift=2cm] {Speicherknopf};
-            \node (play) [process, below of=user1] {Aktionen auf dem Spielfeld};
+            \node (play) [process, below of=user1] {Aktionen auf dem Spielfeld\\Updaten des Boards};
             \node (loadGame) [process, left of=user1, xshift=-2cm] {Ladenknopf};
-            \node (createSavecode) [process, below of=pressSave] {erstellen Speicherdatei};
+            \node (createSavecode) [process, below of=pressSave] {erstellen der\\Speicherdatei};
             \node (accessSavecode) [process, below of=loadGame] {laden der Speicherdatei};
             \draw [arrow] (start) -- node {} (user1);
             \draw [arrow] (user1) -- (pressSave);
@@ -286,7 +286,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
             \draw [arrow] (loadGame) -- (accessSavecode);
             \draw [arrow] (accessSavecode) -- (user1);
         \end{tikzpicture}
-        \caption{Ablauf des Integration Tests}\label{gph:IntegrationTest}
+        \caption{Flowchart für Speicher-/Ladeprozess}\label{gph:IntegrationTest}
     \end{figure}
 
     
