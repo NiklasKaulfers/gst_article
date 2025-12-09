@@ -90,13 +90,6 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     \renewcommand{\footrulewidth}{0.4pt}
 }
 
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
-\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black]
-
-\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
-\tikzstyle{arrow} = [thick,->,>=stealth]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black]
-
 \begin{document}
 \pagestyle{plain}
 \pagenumbering{gobble}
@@ -266,28 +259,70 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
     Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Dateien wieder zum ausgangszustand zurückgebracht werden.
     Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.\\
-    \begin{figure}[h!]
+    Das Diagram\ \ref{gph:IntegrationTest} zeigt auf, wie der Speicher- \& Ladeprozess im Spiel funktioniert.
+    \begin{figure}[ht!]
         \centering
-        \begin{tikzpicture}[node distance=3cm]
-            \node (start) [startstop] {Spiel starten};
-            \node (user1) [decision, below of=start] {Spieleraktion};
-            \node (pressSave) [process, right of=user1, xshift=2cm] {Speicherknopf};
-            \node (play) [process, below of=user1] {Aktionen auf dem Spielfeld\\Updaten des Boards};
-            \node (loadGame) [process, left of=user1, xshift=-2cm] {Ladenknopf};
-            \node (createSavecode) [process, below of=pressSave] {erstellen der\\Speicherdatei};
-            \node (accessSavecode) [process, below of=loadGame] {laden der Speicherdatei};
-            \draw [arrow] (start) -- node {} (user1);
-            \draw [arrow] (user1) -- (pressSave);
-            \draw [arrow] (createSavecode) -- (user1);
-            \draw [arrow] (pressSave) -- (createSavecode);
-            \draw [arrow] (user1) -- (play);
-            \draw [arrow] (play) -- (user1);
-            \draw [arrow] (user1) -- (loadGame);
-            \draw [arrow] (loadGame) -- (accessSavecode);
-            \draw [arrow] (accessSavecode) -- (user1);
+        \tikzstyle{block} = [
+            rectangle, rounded corners,
+            minimum width=3.5cm, minimum height=1.2cm,
+            text centered, draw=black,
+            text width=3cm
+        ]
+        \tikzstyle{decision} = [
+            diamond, aspect=2,
+            text centered, draw=black
+        ]
+        \tikzstyle{startstop} = [
+            ellipse,
+            minimum width=4cm, minimum height=1.2cm,
+            text centered, draw=black
+        ]
+        \tikzstyle{arrow} = [
+            thick, ->, >=stealth
+        ]
+    
+        \begin{tikzpicture}[node distance=2.5cm]
+
+            \node (start)        [startstop] {Initialisierung eines neuen Boards};
+    
+            \node (loadLayout)   [block, below of=start] {Laden des Spielfelds};
+    
+            \node (decisionUser) [decision, below of=loadLayout, yshift=-0.5cm]{Zustandsänderung?};
+    
+            \node (pressSave)    [block, right of=decisionUser, xshift=3.0cm]{Speicherknopf};
+    
+            \node (play)         [block, below of=decisionUser]{Aktionen auf dem Spielfeld\\Updaten des Boards};
+    
+            \node (loadGame)     [block, left of=decisionUser, xshift=-3.0cm]{Ladenknopf};
+    
+            \node (createSave)   [block, below of=pressSave] {Erstellen der Speicherdatei};
+    
+            \node (accessSave)   [block, below of=loadGame]{Laden der Speicherdatei\\Updaten des Boards};
+    
+            % Arrows
+            \draw[arrow] (start) -- (loadLayout);
+            \draw[arrow] (loadLayout) -- (decisionUser);
+    
+            \draw[arrow] (decisionUser) -- (pressSave);
+            \draw[arrow] (pressSave) -- (createSave);
+            \draw[arrow] (createSave) -- (decisionUser);
+    
+            \draw[arrow] (decisionUser) -- (play);
+            \draw[arrow] (play) -- (decisionUser);
+    
+            \draw[arrow] (decisionUser) -- (loadGame);
+            \draw[arrow] (loadGame) -- (accessSave);
+            \draw[arrow] (accessSave) -- (decisionUser);
+    
         \end{tikzpicture}
+    
         \caption{Flowchart für Speicher-/Ladeprozess}\label{gph:IntegrationTest}
-    \end{figure}
+    \end{figure}\\
+    Aus der Figur\ \ref{gph:IntegrationTest} ist bereits ein Problem des Speicherkonzepts zu erkennen, die Datei wird erst mit erstmaligem Speicher erstellt.
+    Der Knopf zum Laden des Spiels hingegen ist bereits mit dem Öffnen des Spiels möglich.
+    Dies kann zu Fehlern und undefinierten Verhalten führen.\\
+    In der tatsächlichen Durchführung der Tests bewahrheitet sich dies.
+    Der \texttt{FileReader} findet keine Datei zum auslesen und wirft ein Error. 
 
     
 
