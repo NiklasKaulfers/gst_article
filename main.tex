@@ -216,7 +216,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Mehrere Module werden im Laufe der Softwareentwicklung aneinandergereiht und verknüpft,
     um dieses Konstrukt zu Testen werden Integration Tests verwendet.
     Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}.
-\subsection{Unit Tests - verbleibende Plätze in einer Spalte}
+\subsection{Unit Tests - Verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wie viele Plätze noch in einer Spalte frei sind.\\
     Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
@@ -254,7 +254,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Für alle anderen Fälle verhält sich die Funktion wie vorgesehen\footnote{siehe Code\ \ref{code:IsTopOfColumnTest}}.
 
     
-\subsection{Integration Tests - Erstellung und Abspeicherung eines Speichercodes}
+\subsection{Integration Tests - Laden und speichern des Spielstands}
     Das Spiel hat eine Speicherlogik. 
     Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
     Dieser funktioniert wie folgt:\verb!{playerTurn}a{rows}a{columns}a{isFull}aB{boardLayout}!.
@@ -266,7 +266,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
     Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Dateien wieder zum ausgangszustand zurückgebracht werden.
     Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.\\
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \begin{tikzpicture}[node distance=3cm]
             \node (start) [startstop] {Spiel starten};
