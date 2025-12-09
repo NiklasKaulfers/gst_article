@@ -171,6 +171,23 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Da diese Arbeit als Teil eines Hochschulmoduls zum Lernen angefertigt wurde, ist das im Hinblick auf die Fähigkeit dieses Projekt zu Testen jedoch irrelevant.
     Einen positiven langfristigen Einfluss kann hingegen für Studenten existieren, welche zu alten Projekten zurückkehren und ihre Kompetenzen testen wollen.
 
+\chapter{Grundlagen}
+\section{statisch oder dynamisch}
+    Statische und dynamische Tests sind in jeder modernen Software angewandt. 
+    Jedoch was ist der Unterschied?
+    Bei statischen oder manuellen\footfullcite[S. 981]{sawant2012software} Tests wird die Struktur des Codes analysiert, aber der Code nicht ausgeführt\footfullcite[S. 14]{fairley1978static}.
+    Im Gegensatz dazu werden dynamische oder automatisierte Tests von einem Testplan abgeleitet, ausgeführt und als Resultat evaluiert\footfullcite[S. 16]{fairley1978static}.
+    Somit stellen statische Tests beispielsweise Code Reviews da, während dynamische Tests die Tests der Testsuit in der Codebasis sind.
+\section{Vorwissen und Einblick der Tester}
+    Es gibt drei Methoden Tests durchzuführen. Diese sind Whitebox- und Blackboxtesting.
+    Blackboxtesting wird auch funktionales Testen genannt\footfullcite[S. 1278f.]{basili1987comparing} in diese ´´schwarzen Box´´(nicht durchsichtigen) kann der Tester nicht hineinsehen.
+    Somit soll der Tester keinen Zugang zum Code haben und interessiert sich einzig und allein für den richtigen Ausgabewert\footfullcite[S. 29f.]{nidhra2012black}
+    Im Gegensatz dazu hat Whiteboxtesting Zugang zum Code für die Tester, um auf die Analogie der ´´schwarze Box´´ zurückzukommen wird Whiteboxtesting auch als Struktur- oder Glasboxtests bezeichnet\footfullcite[S. 30]{nidhra2012black}\footfullcite[S. 1279]{basili1987comparing}
+    Teils wird auch Greyboxtesting erwähnt\footfullcite[S. 2]{jamil2016international}.
+    Dies ist eine Methode, bei welcher die Tester etwas Vorwissen von der Codebasis haben\footfullcite[S. 2]{jovanovic2006software}
+\section{Spektrum an Tests}
+    Um Software zu Testen gibt es eine Vielzahl an verschiedenen Tests, welche an der Software durchgeführt werden können.
+    Diese Tests werden zu verschiedenen Zeitpunkten im Softwaredevelopmentlifecycle angewandt\footfullcite[S. 30]{nidhra2012black}.
 
 
 \chapter{Planung}
@@ -259,7 +276,8 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
     Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Dateien wieder zum ausgangszustand zurückgebracht werden.
     Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.\\
-    Das Diagram\ \ref{gph:IntegrationTest} zeigt auf, wie der Speicher- \& Ladeprozess im Spiel funktioniert.
+    Das Diagram\ \ref{gph:IntegrationTest} zeigt auf, wie der Speicher- \& Ladeprozess im Spiel funktioniert. 
+    Dabei wird alles, was keinen direkten Einfluss auf den Speicher- \& Ladeprozess hat ignoriert.
     \begin{figure}[ht!]
         \centering
         \tikzstyle{block} = [
@@ -322,11 +340,15 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Der Knopf zum Laden des Spiels hingegen ist bereits mit dem Öffnen des Spiels möglich.
     Dies kann zu Fehlern und undefinierten Verhalten führen.\\
     In der tatsächlichen Durchführung der Tests bewahrheitet sich dies.
-    Der \texttt{FileReader} findet keine Datei zum auslesen und wirft ein Error. 
+    Der \texttt{FileReader} findet keine Datei zum auslesen und wirft ein Error, wenn man den Ladeprozess direkt nach dem Start des Spiels aufruft, ohne zuvor gespeichert zu haben. 
 
     
 
 \subsection{System Testing}
+    Während effektive Unit- und Integration Tests verhältnismäßig effektiv umzusetzen sind. 
+    Sind System Tests deutlich komplexer und schwieriger zu implementieren.\\
+    Vor allem in sehr großen Projekten ist diese häufig zu komplex\footfullcite[S. 1]{hayes1999}.
+    Dieses Projekt ist jedoch verhältnismäßig klein und somit auch in der Hinsicht leichter zu Testen.
 
 \section{statische Tests}
 
