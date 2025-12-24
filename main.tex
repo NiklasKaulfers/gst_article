@@ -227,7 +227,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Dies ist hier nicht möglich, da keine tatsächliche Entwicklung mehr stattfindet.\\
     Aufgrund der relativ niedrigen Komplexität ist das Einrichten der Entwicklungs-/Testumgebung verhältnismäßig einfach.
     Anforderungen des Projektes sind lediglich Java 21 oder höher.
-    Empfohlen wird die IDE IntelliJ IDEA. 
+    Empfohlen wird die IDE IntelliJ IDEA.\@
     Um in der Branch mit gradle zu arbeiten muss auch gradle cli installiert sein.
     Die Tests werden mit JUnit 5 durchgeführt und können mittels IntelliJ einfach im Code gestartet werden.
     In der Branch mit gradle ist es einfach, wie in\ \ref{chp:NecessaryChanges}, mit \textit{gradle test} auszuführen.
@@ -239,17 +239,18 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}.
 \subsection{Unit Tests - Verbleibende Plätze in einer Spalte}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
-    Diese überprüft, wie viele Plätze noch in einer Spalte frei sind.\\
+    Diese überprüft, wie viele Plätze in einer Spalte noch frei sind.\\
     Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
     Mit \texttt{isTopOfColumn} ist ein boolean-Wert als Ausgabe zu erwarten.
-    Jedoch ist der tatsächliche Rückgabewert vom Typen int.\\
+    Jedoch ist der tatsächliche Rückgabewert vom Typen int.
+    Somit wird die Anzahl der Plätze welche bis zur Maximalmenge zur Verfügung stehen gezählt und dementsprechend 0 zurückgegeben, wenn kein Platz frei ist.\\
     Zur Implementierung der Tests müssen zuerst Grenzwerte gesetzt werden, in welchen sich die Funktion wie verhalten soll.
     Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung\ \ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
     Daraus folgt, dass Tests für die Inputs -1, 0, 6, 7 durchgeführt werden müssen.
     Die Funktion ist nicht nur von der tatsächlichen Spalte abhängig, sondern auch von der Anzahl der platzierten Steine.
     Somit wird auch getestet, ob die richtigen Werte innerhalb des gültigen Bereichs zurückgegeben werden.
     Um hier das genaue Verhalten zu testen fehlt im Code eine Möglichkeit, um Steine über oder unter dem Spielfeld zu platzieren.
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
     \centering
         \begin{tikzpicture}[>=stealth, thick]
 
