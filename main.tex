@@ -200,17 +200,21 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     So kann beispielsweise Backendlogik über das Frontend getestet werden, die Tester kenne den Code des Backends hierbei, jedoch nicht den des Frontends.
     Diese Form des Testens eignet sich so sehr gut für Webanwendungen\footfullcite[S. 179]{acharya2012bridge}.
 \section{Spektrum an Tests}
-Um Software zu Testen gibt es eine Vielzahl an verschiedenen Tests, welche an der Software durchgeführt werden können.
-Diese Tests werden zu verschiedenen Zeitpunkten im Softwaredevelopmentlifecycle angewandt\footfullcite[S. 30]{nidhra2012black}.
+    Um Software zu Testen gibt es eine Vielzahl an verschiedenen Tests, welche an der Software durchgeführt werden können.
+    Diese Tests werden zu verschiedenen Zeitpunkten im Softwaredevelopmentlifecycle angewandt\footfullcite[S. 30]{nidhra2012black}.
 \subsection{Arten der statischen Tests}
-Eine typische Form der statischen Tests ist das Codereview.
-Bei diesem wird der geschriebene Code von einem anderem Entwickler überprüft.
-Moderne Codereviews sind informell, toolbasiert, asynchron und fokussiert auf Codeänderungen\footfullcite[S. 181]{sadowski2018modern}.
-Es gibt eine Menge an verschiedenen Arten, wie diese Codereviews durchgeführt werden können.
-Dazu zählen die Codeinspektion, asynchrone Reviews per Email, toolbasierte Reviews und pullbasierte Reviews.
-Diese pullbasierten Reviews beziehen sich auf Reviews von Pullrequests, beispielsweise über GitHub\footfullcite[vgl. ][S. 182]{sadowski2018modern}.
-\subsection{Arten der dynamischen Tests}
+    Eine typische Form der statischen Tests ist das \textbf{Codereview}.
+    Bei diesem wird der geschriebene Code von einem anderem Entwickler überprüft.
+    Moderne Codereviews sind informell, toolbasiert, asynchron und fokussiert auf Codeänderungen\footfullcite[S. 181]{sadowski2018modern}.
+    Es gibt eine Menge an verschiedenen Arten, wie diese Codereviews durchgeführt werden können.
+    Dazu zählen die Codeinspektion, asynchrone Reviews per Email, toolbasierte Reviews und pullbasierte Reviews.
+    Diese pullbasierten Reviews beziehen sich auf Reviews von Pullrequests, beispielsweise über GitHub\footfullcite[vgl. ][S. 182]{sadowski2018modern}.\\
    
+\subsection{Arten der dynamischen Tests}
+    Die wohl bekannteste Form der dynamischen Tests sind die \textbf{Unittests}.\\
+    Um nach Codeveränderungen möglichen Regressionen entgegen zu wirken, werden \textbf{Regressionstests} ausgeführt.
+    Diese Tests werden an Code durchgeführt, welcher sich verändert hat\footfullcite[vgl. ][S. 583f.]{legunsen2016extensive}.\\
+
 
 
 \chapter{Planung}
@@ -371,25 +375,27 @@ Diese pullbasierten Reviews beziehen sich auf Reviews von Pullrequests, beispiel
 \subsection{System Testing}
     Während effektive Unit- und Integration Tests verhältnismäßig effektiv umzusetzen sind. 
     Sind System Tests deutlich komplexer und schwieriger zu implementieren.\\
-    Vor allem in sehr großen Projekten ist diese häufig zu komplex\footfullcite[S. 1]{hayes1999}.
+    Vor allem in sehr großen Projekten ist diese häufig zu komplex\footfullcite[vgl. ][S. 1]{hayes1999}.
     Dieses Projekt ist jedoch verhältnismäßig klein und somit auch in der Hinsicht leichter zu Testen.
 
 \section{statische Tests}
-\subsection{Codereview}
-    Im Rahmen der statischen Tests wird eine Codeanalyse vorgenommen. 
+    Im Rahmen der statischen Tests wird eine Codeanalyse in Form eines Codereviews vorgenommen. 
     Hier wird der Commit \texttt{dec55bf} betrachtet, welcher die Funktion zum Speichern und Laden der Speichern.
     Zu betrachten ist der Code\ \ref{code:setValues1} zum Decoden des Savefile-Inhalts.\\
     Zuerst wird der Code nach seiner Lesbarkeit bewertet. 
     Hier kommt direkt ein Problem auf: Die Benennung der Variablen. 
-    Wie in Listing\ \ref{code:setValuesVars} zu erkennen ist sind die Namen nicht leicht zu entschlüsseln, 
+    Wie in\ \ref{code:setValuesVars} zu erkennen ist sind die Namen nicht leicht zu entschlüsseln, 
     vor allem da sie häufig in Kombination miteinander auftreten und so schwer zu verstehen ist, 
     welche Variable wofür zuständig ist.
     Dieses Problem ist wenig problematisch, wenn nur ein Entwickler an dem Programm arbeitet, 
     jedoch durchaus von größerer Bedeutung, wenn ein Team daran arbeitet.
+    Da gute Namensgebung von fundamentaler Bedeutung für die Lesbarkeit des Codes ist\footfullcite[vgl. ][S. 281]{deissenboeck2006concise}
     Es stellt sich so das Problem heraus, wie der Code in Zukunft zu warten ist. 
     Die Entwicklung kann so verlangsamt werden.
     \begin{figure}[ht!]
-        \begin{lstlisting}[caption={Variablen der Funktion}, label={code:setValuesVars}]
+        \caption{Variablen der Funktion}\label{code:setValuesVars}
+        \centering
+        \begin{lstlisting}
             Tile[][] spFeld;
             boolean player1Turn = false;
             boolean full = false;
