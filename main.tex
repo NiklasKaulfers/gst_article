@@ -203,14 +203,16 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Um Software zu Testen gibt es eine Vielzahl an verschiedenen Tests, welche an der Software durchgeführt werden können.
     Diese Tests werden zu verschiedenen Zeitpunkten im Softwaredevelopmentlifecycle angewandt\footfullcite[S. 30]{nidhra2012black}.
 \subsection{Arten der dynamischen Tests}
-    Die wohl bekannteste Form der dynamischen Tests sind die \textbf{Unittests}. 
+    Die wohl bekannteste Form der dynamischen Tests sind die \textbf{Unittests}.
     Bei diesen wird das kleinste, alleinstehende Modul der Software getestet\footfullcite[vgl. ][S. 24]{runeson2006unit}.
-    Im Umfeld von Objektorientierter Programmierung (OOP) heißt dies vor allem Testen der einzelnen Klassen\footfullcite[vgl. ][S. 1925f.]{wappler2006evolutionary}.
+    Im Umfeld von Objektorientierter Programmierung (OOP) heißt dies vor allem Testen der einzelnen Klassen, da diese als einziges in Isolation getestet werden können\footfullcite[vgl. ][S. 1925f.]{wappler2006evolutionary}.
     Da die Umsetzung von OOP etwas mangelhaft in diesem Projekt ist und keine tiefgreifende Modualisierung stattfindet,
-    wird in dieser Arbeit Unittests auf die einzelnen Funktionen angewandt. 
-    \\
+    wird in dieser Arbeit Unittests auf die einzelnen Funktionen angewandt.\\
     Um nach Codeveränderungen möglichen Regressionen entgegen zu wirken, werden \textbf{Regressionstests} ausgeführt.
     Diese Tests werden an Code durchgeführt, welcher sich verändert hat\footfullcite[vgl. ][S. 583f.]{legunsen2016extensive}.\\
+    Um die Funktionalität von mehreren Komponenten, welche zusammen agieren zu Testen, werden \textbf{Integrationstests} verwendet.
+    Es gibt arbeiten, welche eine Art coupling basiertes Testing vorschlagen\footfullcite{zhenyi1998coupling}.
+    In diesem Beispiel wird gennant, dass Fehler in einem Modul immer dazu führen, dass die davon abhängigen Module davon beeinträchtigt werden \footfullcite[S. 134f.]{zhenyi1998coupling}
 
 \subsection{Arten der statischen Tests}
     Eine typische Form der statischen Tests ist das \textbf{Codereview}.
@@ -388,7 +390,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 \section{statische Tests}
     Im Rahmen der statischen Tests wird eine Codeanalyse in Form eines Codereviews vorgenommen. 
-    Hier wird der Commit \texttt{dec55bf} betrachtet, welcher die Funktion zum Speichern und Laden der Speichern.
+    Hier wird der Commit \texttt{dec55bf} betrachtet, welcher die Funktion zum Speichern und Laden des Speicherstands hinzufügte.
     Zu betrachten ist der Code\ \ref{code:setValues1} zum Decoden des Savefile-Inhalts.\\
     Zuerst wird der Code nach seiner Lesbarkeit bewertet. 
     Hier kommt direkt ein Problem auf: Die Benennung der Variablen. 
