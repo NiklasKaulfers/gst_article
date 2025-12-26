@@ -277,7 +277,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Mehrere Module werden im Laufe der Softwareentwicklung aneinandergereiht und verknüpft,
     um dieses Konstrukt zu Testen werden Integration Tests verwendet.
     Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}.
-\subsection{Unit Tests - Verbleibende Plätze in einer Spalte}
+\subsection{Unit Tests - Verbleibende Plätze in einer Spalte}\label{sec:unitTests}
     Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wie viele Plätze in einer Spalte noch frei sind.\\
     Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
@@ -438,7 +438,24 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Prinzipiell hätte die gesamte Speicherlogik eine eigene Klasse sein sollen, 
     um den Code besser zu modularisieren und langfristig sicher zu stellen, 
     dass weitere Features hinzugefügt werden können. 
-
+\section{KI-basierte Tests}
+    Der Einfluss von KI im Softwaretesten ist nicht zu bestreiten.
+    Um die KI zu testen wurden im Rahmen dieser Arbeit mehrere Modelle zur Testgenerierung verwendet.
+    Es wurde stets der Prompt\ \ref{pro:testingPrompt}.
+    In diesem wird die KI aufgefordert ausreichende Unittests für die Funktion \texttt{isTopOfColumn()} zu generieren.
+    Als Kontext wurde stets die Datei \texttt{Board.java} verwendet.
+\subsection{GitHub Copilot mit GPT 5o-mini}
+    GitHub Copilot ist eine in das Integrated Development Environment (IDE) integrierter KI Assistent, 
+    welcher auch in der Lage ist, mit dem Code und dem Terminal zu interagieren.
+    So besteht die Möglichkeit, die KI den Code selber schreiben zu lassen und notfalls mit mehreren Iterationen diesen auch zu verbessern.
+    Im Prompt\ \ref{pro:testingPrompt} ist erkennbar, wie eine Datei als Kontext verwendet werden kann.
+    Dies geschieht mit dem Symbol \#.\\
+    GPT 5o-mini war hier in der Lage, sowohl die Datei ordentlich zu lesen und zu verstehen,
+    als auch entsprechende Ausführung des Skripts durchzuführen.
+    Hier versuchte es zuerst gradle, da das Projekt in der Ausführung jedoch kein gradle hat,
+    hat die KI dann auf\\ \texttt{java -jar lib/junit-platform-console-standalone-1.11.0-M2.jar\\ --class-path build/test-classes:build/classes/java/main --scan-class-path}\\
+    gewechselt. 
+    Dies funktionierte auch und hat ähnlich wie die handgeschriebenen Unittests in Sektion\ \ref{sec:unitTests} zwei Fehler gefunden.
 
 \chapter{Probleme des Projektes}
 \section{Nicht behobene Probleme}
@@ -787,7 +804,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
         }
     \end{lstlisting}
 
-\chapter{Prompts und KI-generiertes}
+\chapter{KI-Nutzung}
 \begin{lstlisting}[label={pro:testingPrompt}, caption={Test mit GitHub Copilot}]
     For the function isTopOfColumn in #file:Board.java 
     create unit tests with JUnit in this file.
@@ -838,13 +855,15 @@ public class Gpt5oMiniTests {
     }
 
     @Test
-    @DisplayName("WHEN negative column index is given THEN return 0 (out of bounds)")
+    @DisplayName("WHEN negative column index is given 
+    THEN return 0 (out of bounds)")
     void negativeColumnIndex() {
         Assertions.assertEquals(0, board.isTopOfColumn(-1));
     }
 
     @Test
-    @DisplayName("WHEN column index is greater than last column THEN return 0 (out of bounds)")
+    @DisplayName("WHEN column index is greater than last column 
+    THEN return 0 (out of bounds)")
     void tooLargeColumnIndex() {
         // default board has 7 columns, last index is 6 -> use 7 as out of bounds
         Assertions.assertEquals(0, board.isTopOfColumn(7));
