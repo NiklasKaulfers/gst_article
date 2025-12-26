@@ -213,7 +213,10 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Diese Tests werden an Code durchgeführt, welcher sich verändert hat\footfullcite[vgl. ][S. 583f.]{legunsen2016extensive}.\\
     Um die Funktionalität von mehreren Komponenten, welche zusammen agieren zu Testen, werden \textbf{Integrationstests} verwendet\footfullcite[vgl. ][S. 1]{haser2014software}.
     Es gibt arbeiten, welche eine Art coupling basiertes Testing vorschlagen\footfullcite{zhenyi1998coupling}.
-    In diesem Beispiel wird gennant, dass Fehler in einem Modul immer dazu führen, dass die davon abhängigen Module davon beeinträchtigt werden \footfullcite[S. 134f.]{zhenyi1998coupling}
+    In diesem Beispiel wird genannt, dass Fehler in einem Modul immer dazu führen, dass die davon abhängigen Module davon beeinträchtigt werden \footfullcite[S. 134f.]{zhenyi1998coupling}.
+    Tests des gesamtem Systems sind \textbf{Systemtests}, bei diesen werden Tests durchgeführt, welche die vollständige Funktionsweise der Software testen.
+    Zudem ist die Aufgabe dieser Tests, die Fehler beim Zusammenfügen der Module entstanden\footfullcite[S. 128]{myers2004art}.
+
 
 \subsection{Arten der statischen Tests}
     Eine typische Form der statischen Tests ist das \textbf{Codereview}.
@@ -226,7 +229,15 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Es besteht in diesem Zusammenhang auch die Möglichkeit der Automatisierung. 
     Mithilfe dieser Tools kann der Code untersucht werden und mögliche Anormalitäten aufgespürt werden\footfullcite[vgl. ][S. 240f.]{zheng2006value}.
 
-
+\section{Einfluss von KI/LLMs}
+    Large Language Models (LLM) sind in den letzten Jahren zu einem teils durchaus nützlichen Tool in der Softwareentwicklung geworden.
+    Jedoch sind diese Tools vor allem im Bereich des Softwaretestens heute von hoher Bedeutung und von großem Nutzen.
+    Im Jahr 2024 wurde ein Paper veröffentlicht, welches aktuelle LLMs als nicht ausreichend, sogar für Unittests, 
+    ansieht und dies mit Modellen wie GPT 3 vergleicht\footfullcite[S. 917ff.]{wang2024software}.
+    Während eine Arbeit von vielen Ungenauigkeiten von LLMs redet\footfullcite[S. 917]{wang2024software},
+    sehen andere ein größeres Risiko im menschlichen Error und LLMs und KI im generellem als möglichen Weg diese zu reduzieren\footfullcite[S. 5f.]{baqar2025future}.
+    Wieder andere Artikel sind weniger optimistisch und sehen LLMs als sinnvolles Tool, welches jedoch Limits hat.
+    Beispielsweise das Wort Bank im Zusammenhang mit Geldinstitut oder Sitzgelegenheit und inwiefern eine LLM hier in der Lage ist den richtigen Kontext zu ermitteln\footfullcite[S. 21f.]{alenezi2025ai}.
 
 \chapter{Planung}
 \section{Testziele}
@@ -392,7 +403,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 \section{statische Tests}
     Im Rahmen der statischen Tests wird eine Codeanalyse in Form eines Codereviews vorgenommen. 
     Hier wird der Commit \texttt{dec55bf} betrachtet, welcher die Funktion zum Speichern und Laden des Speicherstands hinzufügte.
-    Zu betrachten ist der Code\ \ref{code:setValues1} zum Decoden des Savefile-Inhalts.\\
+    Zu betrachten ist der Code\ \ref{code:setValues1} zum Dekodieren des Savefile-Inhalts.\\
     Zuerst wird der Code nach seiner Lesbarkeit bewertet. 
     Hier kommt direkt ein Problem auf: Die Benennung der Variablen. 
     Wie in\ \ref{code:setValuesVars} zu erkennen ist sind die Namen nicht leicht zu entschlüsseln, 
