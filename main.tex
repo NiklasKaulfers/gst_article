@@ -238,6 +238,8 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     sehen andere ein größeres Risiko im menschlichen Error und LLMs und KI im generellem als möglichen Weg diese zu reduzieren\footfullcite[S. 5f.]{baqar2025future}.
     Wieder andere Artikel sind weniger optimistisch und sehen LLMs als sinnvolles Tool, welches jedoch Limits hat.
     Beispielsweise das Wort Bank im Zusammenhang mit Geldinstitut oder Sitzgelegenheit und inwiefern eine LLM hier in der Lage ist den richtigen Kontext zu ermitteln\footfullcite[S. 21f.]{alenezi2025ai}.
+    Generell können LLMs jedoch von großem Nutzen vor allem, wen es um das Schreiben von Tests, welche sehr einfach zu verstehen sind und für den Mensch nur repetetiv sein können.
+    Beispielsweise bekannte Algorithmen in Unittests, jedoch ist auch hier menschliches Überprüfen noch von nöten.
 
 \chapter{Planung}
 \section{Testziele}
@@ -439,10 +441,28 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 
 
 \chapter{Probleme des Projektes}
-\section{Behobene Probleme}
 \section{Nicht behobene Probleme}
+    Viele Probleme des Projektes konnten im Verlauf der Arbeit nicht behoben werden, da sie zu umfangreich sind.
+    So besteht weiterhin eine schlechte Grundstruktur mit wenigen und zu großen Dateien, welche zudem zu viele Tätigkeiten gleichzeitig machen.
+    Auch wurden nicht alle Errors behoben, so besteht der Error, bei welchem der Nutzer einen Speicherstand laden kann, es jedoch keine Speicherstand gibt und das Programm somit abstürzt.
+    Auch grundsätzliche Logikfehler im Code sind nicht behoben, da dies auch nicht im Rahmen der Arbeit ist und das Projekt keine Arbeit erfährt.
+\section{Behobene Probleme}
+    Obwohl noch viele Probleme existieren konnten trotzdem einige behoben werden.
+    Dies vor allem im Hinblick auf Testdeckung. 
+    Die bereits stehenden Tests zu vor dem Beginn dieser Arbeit waren bei weitem unzureichend,
+    das Problem bestand vor allem darin, das es keine spezifischen Tests der einzelnen Bestandteile gab, sondern nur generelle Tests, in welchen mehrere Features auf einmal getestet wurden.
+    Die neuen Tests sind wahrhafte Unittests und Integrationstests und fokussieren sich auf ihren jeweiligen Bereich.
+    Dies sollte langfristig positive Folgen haben, da diese Tests auch in Zukunft verwendet werden können um die Funktionalität zu überprüfen.
+
 
 \chapter{Fazit}
+    Diese Arbeit zeigt, wie wichtig Softwaretests für Produkte sind, da diese sonst keinen Erfolg haben können.
+    Auch wird ersichtlich, wie bedeutsam Rückblicke auf eigene Projekte sind um seinen eigenen Fortschritt besser zu verstehen und aus alten Fehlern zu lernen.
+    Ein Projekt wie dieses sollte nicht nochmal entstehe, da es nahezu nicht wartbar ist und nicht ausreichend Modular ist.
+    Für nächste Projekte sollte ein Plan, welcher auch genaue Testabläufe definiert, früh erstellt werden.
+    Auch statische Reviews in Form von Codereviews sollten eingeführt werden um eine hohe Qualität zu garantieren.
+    Generell sind im Verlauf der Arbeit häufig Fehler aufgetreten, welche vor allem der Unerfahrenheit zu verschulden waren.\\
+    Ersichtlich werden auch Implementierungen der verschiedenen Testformen in der Programmiersprache Java. 
 
 \begin{appendices}
 \chapter{Grafiken}
