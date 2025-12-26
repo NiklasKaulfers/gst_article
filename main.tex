@@ -445,7 +445,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Viele Probleme des Projektes konnten im Verlauf der Arbeit nicht behoben werden, da sie zu umfangreich sind.
     So besteht weiterhin eine schlechte Grundstruktur mit wenigen und zu großen Dateien, welche zudem zu viele Tätigkeiten gleichzeitig machen.
     Auch wurden nicht alle Errors behoben, so besteht der Error, bei welchem der Nutzer einen Speicherstand laden kann, es jedoch keine Speicherstand gibt und das Programm somit abstürzt.
-    Auch grundsätzliche Logikfehler im Code sind nicht behoben, da dies auch nicht im Rahmen der Arbeit ist und das Projekt keine Arbeit erfährt.
+    Zudem sind grundsätzliche Logikfehler im Code nicht behoben, da dies nicht im Rahmen der Arbeit ist und das Projekt keine weitere Arbeit erfährt.
 \section{Behobene Probleme}
     Obwohl noch viele Probleme existieren konnten trotzdem einige behoben werden.
     Dies vor allem im Hinblick auf Testdeckung. 
@@ -786,6 +786,71 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
             this.setTurn(player1Turn);
         }
     \end{lstlisting}
+
+\chapter{Prompts und KI-generiertes}
+\begin{lstlisting}[label={pro:testingPrompt}, caption={Test mit GitHub Copilot}]
+    For the function isTopOfColumn in #file:Board.java 
+    create unit tests with JUnit in this file.
+\end{lstlisting}
+\newpage
+\begin{lstlisting}[label={code:aiGeneratedTests}, caption={Code von GPT 5o-Mini}]
+package test.logic.board;
+
+import api.BoardTestInterface;
+import logic.Board;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class Gpt5oMiniTests {
+
+    BoardTestInterface board;
+
+    @BeforeEach
+    void setUp() {
+        board = new Board();
+    }
+
+    @Test
+    @DisplayName("WHEN column 0 is empty THEN return number of rows (6)")
+    void emptyColumnZero() {
+        Assertions.assertEquals(6, board.isTopOfColumn(0));
+    }
+
+    @Test
+    @DisplayName("WHEN column 2 has 3 stones placed THEN return 3")
+    void partlyFilledColumn() {
+        board.placeStone(2);
+        board.placeStone(2);
+        board.placeStone(2);
+
+        Assertions.assertEquals(3, board.isTopOfColumn(2));
+    }
+
+    @Test
+    @DisplayName("WHEN column 3 is filled completely THEN return 0")
+    void fullColumn() {
+        for (int i = 0; i < board.getrows(); i++) {
+            board.placeStone(3);
+        }
+        Assertions.assertEquals(0, board.isTopOfColumn(3));
+    }
+
+    @Test
+    @DisplayName("WHEN negative column index is given THEN return 0 (out of bounds)")
+    void negativeColumnIndex() {
+        Assertions.assertEquals(0, board.isTopOfColumn(-1));
+    }
+
+    @Test
+    @DisplayName("WHEN column index is greater than last column THEN return 0 (out of bounds)")
+    void tooLargeColumnIndex() {
+        // default board has 7 columns, last index is 6 -> use 7 as out of bounds
+        Assertions.assertEquals(0, board.isTopOfColumn(7));
+    }
+}
+\end{lstlisting}
     
     
 \end{appendices}
