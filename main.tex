@@ -254,7 +254,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Um gute Qualität im Endprodukt zu erhalten muss eine Qualitätssicherung durchgeführt werden. 
     Diese bezieht sich auf den Entwicklungs- als auch den Testprozess und liegt in der Verantwortung aller Projektbeteiligten\footfullcite[K. 1 S. 23]{expleo}.
     Im Verlauf des Projektes wurde der Qualitätssicherungsprozess vollständig ignoriert.
-    Daraus kann auch die inkonsistente Codequalität herausgeleitet werden.
+    Daraus kann auch die inkonsistente Codequalität hergeleitet werden.
     So sind Kommentare in sowohl deutsch als auch englisch und einige Codeabschnitte sind deutlich besser lesbar als andere.
     Somit ist das Projekt langfristig schwer aufrecht zu erhalten und zu erweitern. 
     Da vor dieser Arbeit nur ein geringes Mass an Testen existierte sind auch viele Fehler unbehoben und in der Entwicklung ignoriert wurden.
@@ -464,14 +464,16 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Demnach sollte es auch gut für eine Entwicklung von Tests sein.
     Auch hier wird der selbe Prompt verwendet. 
     Der Unterschied besteht jedoch darin, dass anstatt von \#Board.java der tatsächliche Inhalt von \texttt{Board.java} kopiert wird.
-    Schnell entsteht hierbei ein Problem, so ist der Packagename nicht passend mit dem tatsächlichen Punkt, an dem die Datei eingestzt werden soll.
+    Schnell entsteht hierbei ein Problem, so ist der Packagename nicht passend mit dem tatsächlichen Punkt, an dem die Datei eingesetzt werden soll.
     Dies ist schnell zu beheben.
     Ein weiteres Problem trat auf, bei der Kompilierung der Tests, hier ist Claude Sonnet sich nicht von der Struktur des Projektes bewusst und erstellt seine Skripts gemäß eigener Erwartungen.
-    Auch hierfür musste zuerst der Prompt\ \ref{pro:promptAfterTest} verwendet werden, da Claude nicht selbstständig soetwas erledigt.
+    Auch hierfür musste zuerst der Prompt\ \ref{pro:promptAfterTest} verwendet werden, da Claude nicht selbstständig so etwas erledigt.
     Die entstandenen Resultate mussten dann stark angepasst werden, da sie nicht mit dem Projekt vereinbar waren.
     So wurde von einer älteren Version von JUnit ausgegangen, als in dem Projekt vorhanden ist.\\
-    Die Testfälle sind wieder sehr gut und stimmen mit den vorherkommenden Unittests überein.
+    Die Testfälle sind wieder sehr gut und stimmen mit den vorher kommenden Unittests überein.
     Hier hat Claude Sonnet ein ähnliches Resultat wie GPT 5o-mini in \ \ref{sec:gpt5o} und die eigenen Tests in\ \ref{sec:unitTests}.
+    Der Erfolg hier ist beschränkter, zwar ist der Code richtig und befasst sich mit den richtigen Ansätzen, 
+    jedoch ist hier noch eine Menge eigenes Einwirken von Nöten. 
 
 \chapter{Probleme des Projektes}
 \section{Nicht behobene Probleme}
