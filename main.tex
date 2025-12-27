@@ -108,12 +108,13 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
 \fancyfoot[R]{\sffamily\thepage}
 \pagenumbering{arabic}
 {
-    Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden, 
-    jedoch können Entwickler versuchen diesen so gut wie möglich vorzubeugen und somit nicht in entsprechende Produktionsumgebungen vordringen zu lassen. 
-    Dies tun sie mittels Softwaretests. In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt.
+    Fehler sind in der Softwareentwicklung nahezu nicht zu vermeiden.
+    Jedoch können Entwickler versuchen, diesen so gut wie möglich vorzubeugen, damit diese nicht in entsprechende Produktionsumgebungen vordringen können. 
+    Dies tun sie mittels Softwaretests. 
+    In dieser Arbeit wird sich mit der Durchführung dieser Tests an einem Projekt auseinandergesetzt, dabei wird die Frage beantwortet, wie diese innerhalb eines Projektes umgesetzt werden können.
     Es wird tiefer auf spezielle Testfälle eingegangen und allgemeine Testvorgehensweisen werden angewandt.
-    Um die Testfälle genauer zu verstehen wird zuerst eine Analyse des Testobjektes durchgeführt.
-    Hieran wird die Komplexität des Projektes ermittelt und eventuelle bereits sichtbare Probleme diskutiert.
+    Um die Testfälle genauer zu verstehen, wird zuerst eine Analyse des Testobjektes durchgeführt.
+    Hieran wird die Komplexität des Projektes ermittelt und eventuelle bereits sichtbare Probleme werden diskutiert.
     Anschließend werden die entsprechenden Grundlagen des Softwaretestens, welche von Bedeutung in dieser Arbeit sind, vorgestellt und erläutert.
     Daraufhin wird eine Planung des Testablaufs durchgeführt und hierbei an einzelnen Fällen ein tieferer Einblick gegeben.
     Zur Durchführung wird zu jedem der vorgestellten Möglichkeiten des Testens eine an einem Beispiel des Projektes gezeigt.
@@ -122,25 +123,25 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Inwiefern diese Arbeit erfolgreich war und mögliche Konsequenzen können aus dem Fazit entnommen werden.\\
     Im Verlauf der Arbeit sind \underline{unterstrichene} und \textit{kursive} Textabschnitte zu finden. 
     \underline{Unterstrichene} sind Links und \textit{kursive} Terminalanweisungen. 
-    Teile des Quellcodes, welcher in der Ausarbeitung dieser Arbeit entstand ist hingegen im Anhang\ \ref{chp:Code} zu finden.
+    Teile des Quellcodes, welcher in der Ausarbeitung dieser Arbeit entstand, sind hingegen im Anhang\ \ref{chp:Code} zu finden.
 \par}
 
 \chapter{Testobjekt}
 \section{Vorstellung des Projektes}
-    Das Projekt, an welchem die Tests durchgeführt wurden ist ein Gemeinschaftsprojekt des Matrikels IIb23 aus dem Modul OOP (Objektorientierte Programmierung). 
-    Es handelt sich hierbei um eine Java-Implementation des Spiels Vier Gewinnt, einem bekannten und relativ leicht verständlichem Strategiespiel. 
-    Dieses Spiel zu zweit Spielen spielbar. 
-    Das Ziel ist es jeweils 4 der eigenen Steine in einer Reihe zu platzieren und mit eigenen Steinen verhindern, dass der Gegner dasselbe tut.\\
-    Die Studenten des Moduls wurden im Rahmen des Moduls in verschiedene Teams aufgeteilt um das Projekt gemeinsam anzufertigen.
-    Die Teams waren Projektmanagement, Backend, Frontend und Testing (Ich war Teil des Projektmanagementteams).
+    Das Projekt, an welchem die Tests durchgeführt wurden, ist ein Gemeinschaftsprojekt des Matrikels IIb23 aus dem Modul OOP (Objektorientierte Programmierung). 
+    Es handelt sich hierbei um eine Java-Implementation des Spiels `Vier Gewinnt`', einem bekannten und relativ leicht verständlichem Strategiespiel. 
+    Dieses Spiel ist zu zweit spielbar. 
+    Das Ziel ist es, jeweils vier der eigenen Steine in einer Reihe zu platzieren und mit eigenen Steinen zu verhindern, dass der Gegner dasselbe tut.\\
+    Die Studenten des Moduls wurden im Rahmen der Lehrveranstaltung in verschiedene Teams aufgeteilt, um das Projekt gemeinsam anzufertigen.
+    Die Teams waren Projektmanagement, Backend, Frontend und Testing\footnote{Ich war Teil des Projektmanagementteams}.
     Zur Erstellung wurde über \href{https://github.com/NiklasKaulfers/VierGewinnt}{\underline{GitHub}} kollaboriert.
     Alle im Rahmen dieser Arbeit erbrachten Leistungen sind in dieser GitHub-Repository zu finden.
-    Im Fall des Projektes gibt es Möglichkeiten, zum lokalen spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
+    Im Fall des Projekts gibt es Möglichkeiten, zum lokalen Spielen gegen einen anderen Spieler oder gegen einen Computergegner. 
     Das Spiel hat zudem ein GUI (Graphical User Interface), 
     welches den Spielstand visualisiert und entsprechende Aktionen für den Spieler erlaubt\footnote{\ref{img:gameInProgress}, Screenshot aus dem Spiel}.\\
     Im Hintergrund besteht das Spiel aus 4 Komponenten; Api, Logik, Frontend und Tests.
     Diese sind voneinander logisch in der Ordnerstruktur abgetrennt\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.
-    Der api Ordern beinhaltet Interfaces, welche die Logik definieren. 
+    Der api Order beinhaltet Interfaces, welche die Logik definieren. 
     Hier gibt es auch ein Interface, welches ausschließlich zum Testen gemacht wurde. 
     Die Logik implementiert diese Interfaces und versorgt sie mit Funktionalität.
     Für ein ordentliches grafisches Display sorgt das Frontend. 
@@ -149,9 +150,9 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Jedoch waren diese vor dieser Arbeit noch nicht ausgereift.
  
 \subsection{Psychologische Betrachtung}
-    Tests werden häufig als unnötig und als Methode zum zeigen, dass es keine Errors gibt angesehen.
-    Tatsächlich werden Tests jedoch verwendet um Errors zu finden und fehlverhalten der Software im Vorhinein zu verringern\footfullcite[p.10]{myers2004art}.
-    Auch hier im Projekt waren die bereits existieren Tests eher minimal und testen vor allem die Hauptszenarios. 
+    Tests werden häufig als unnötig und als Methode zu Zeigen angesehen, dass es keine Errors gibt\footfullcite[p.10]{myers2004art}.
+    Tatsächlich werden Tests jedoch verwendet, um Errors zu finden und Fehlverhalten der Software im Vorhinein zu verringern\footfullcite[p.10]{myers2004art}.
+    Auch hier im Projekt waren die bereits existierenden Tests eher minimal und testen vor allem die Hauptszenarios. 
     Vor allem explizite Logik ist noch ungetestet.\\
     Implementation von Verbesserungen oder eventuelle Bugfixes sind zudem unerwartet, da es sich hierbei um ein abgeschlossenes Projekt handelt.
     Das Projekt hat keinerlei Bugreportmethoden oder ähnliches. 
@@ -160,59 +161,62 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     In diesem Projekt können Mitentwickler einfach merges in die Mainbranch durchführen, da diese nicht geschützt ist. 
 \subsection{Ökonomische Betrachtung}
     Während im ökonomischen Sinn meist die Gesamtkosten betrachtet werden, ist in dieser Arbeit die Zeit von größerer Bedeutung.
-    Rahmen des Projektes stellt das Wintersemester 2025/26.\\
+    Der Rahmen des Projektes stellt das Wintersemester 2025/26.\\
     Die Tests müssen deswegen in einem sehr geringem Zeitrahmen gefertigt werden.\\
     Das Projekt war ein Teil eines Hochschulmoduls, somit waren die Ressourcen stark begrenzt. 
-    Auch hierzu anzumerken ist, dass es sich um ein Modul aus dem zweiten Semester handelt, 
-    weswegen auch die Erfahrungen der beteiligten noch nicht ausgereift waren.
+    Auch hierzu ist anzumerken, dass es sich um ein Modul aus dem zweiten Semester handelt, 
+    weswegen auch die Erfahrungen der Beteiligten noch nicht ausgereift waren.
 \section{Nötige Anpassungen}\label{chp:NecessaryChanges}
     Das Projekt auszuführen stellte sich als unnötig komplex heraus, 
     da das Mainfile, welches die Software startet, in einem von vielen Unterordnern aufzufinden war.\\
-    Im vor hinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
-    Diese waren Teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
-    Hier ist eine bessere Projektstruktur, welche eine einfachere Ausführung und Verarbeitung ermöglicht benötigt.
-    Um dies zu verwirklichen wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
+    Im Vorhinein war das Projekt sehr unübersichtlich und benötigte einige Verbesserungen, vor allem in Hinblick auf Namensgebung von Variablen.
+    Diese waren teils mit einzelnen Buchstaben benannt und somit schwer verständlich und lesbar\footnote{\ref{gph:startProjectLayout}, Layout des Projektes zu Beginn der Tests}.\\
+    Hier ist eine bessere Projektstruktur nötig, welche eine einfachere Ausführung und Verarbeitung ermöglicht.
+    Um dies zu verwirklichen, wurde das Projekt in einer neuen Branch in \href{https://github.com/NiklasKaulfers/VierGewinnt/tree/gradle-test}{\underline{gradle}} neu aufgesetzt.
     Nun kann das Projekt einfach über \textit{gradle run} ausgeführt werden.
     Auch sämtliche Tests sind mit \textit{gradle test} somit leichter zugänglich.\\
     Alle diese Anpassungen geschahen vor einer Umsetzung der Tests um die Entwicklungsumgebung angenehmer zu gestalten.
 \section{Eignung zum Testen}
-    Da das Projekt aus mehreren verschieden komplexen Codeteilen besteht ist es auch gut zum Testen geeignet. 
-    Auch von nutzen hier ist, dass es ein eigenes UI gibt, an welchem auch Tests durchgeführt werden können.\\
+    Da das Projekt aus mehreren verschieden komplexen Codeteilen besteht, ist es auch gut zum Testen geeignet. 
+    Auch von Nutzen ist hier, dass es ein eigenes UI gibt, an welchem Tests durchgeführt werden können.\\
     Problematisch hingegen ist, dass das Projekt nicht weiter in Bearbeitung ist und die Tests langfristig eher von geringem Nutzen sein werden.
-    Da diese Arbeit als Teil eines Hochschulmoduls zum Lernen angefertigt wurde, ist das im Hinblick auf die Fähigkeit dieses Projekt zu Testen jedoch irrelevant.
-    Einen positiven langfristigen Einfluss kann hingegen für Studenten existieren, welche zu alten Projekten zurückkehren und ihre Kompetenzen testen wollen.
+    Da diese Arbeit als Teil eines Hochschulmoduls zum Lernen angefertigt wurde, ist das im Hinblick auf die Fähigkeit dieses Projekt zum Testen jedoch irrelevant.
+    Ein positiver langfristiger Einfluss kann hingegen für Studenten existieren, welche zu alten Projekten zurückkehren und ihre Kompetenzen testen wollen.
 
 \chapter{Grundlagen}
-\section{statisch oder dynamisch}
+\section{Statisch oder dynamisch Tests}
     Statische und dynamische Tests sind in jeder modernen Software angewandt. 
-    Jedoch was ist der Unterschied?
+    Jedoch worin besteht der Unterschied?
     Bei statischen oder manuellen\footfullcite[S. 981]{sawant2012software} Tests wird die Struktur des Codes analysiert, aber der Code nicht ausgeführt\footfullcite[S. 14]{fairley1978static}.
     Im Gegensatz dazu werden dynamische oder automatisierte Tests von einem Testplan abgeleitet, ausgeführt und als Resultat evaluiert\footfullcite[S. 16]{fairley1978static}.
     Somit stellen statische Tests beispielsweise Code Reviews da, während dynamische Tests die Tests der Testsuit in der Codebasis sind.
 \section{Vorwissen und Einblick der Tester}
-    Es gibt drei Methoden Tests durchzuführen. Diese sind Whitebox- und Blackboxtesting.
-    Blackboxtesting wird auch funktionales Testen genannt\footfullcite[S. 1278f.]{basili1987comparing} in diese ´´schwarzen Box´´(nicht durchsichtigen) kann der Tester nicht hineinsehen.
-    Somit soll der Tester keinen Zugang zum Code haben und interessiert sich einzig und allein für den richtigen Ausgabewert\footfullcite[S. 29f.]{nidhra2012black}
-    Im Gegensatz dazu hat Whiteboxtesting Zugang zum Code für die Tester, um auf die Analogie der ´´schwarze Box´´ zurückzukommen wird Whiteboxtesting auch als Struktur- oder Glasboxtests bezeichnet\footfullcite[S. 30]{nidhra2012black}\footfullcite[S. 1279]{basili1987comparing}
+    Es gibt drei Methoden Tests durchzuführen. 
+    Die zwei bedeutendsten sind Whitebox- und Blackboxtesting.
+    Blackboxtesting wird auch funktionales Testen genannt\footfullcite[S. 1278f.]{basili1987comparing} in diese ´´schwarze (nicht durchsichtige) Box´´ kann der Tester nicht hineinsehen.
+    Somit soll der Tester keinen Zugang zum Code haben und interessiert sich einzig und allein für den richtigen Ausgabewert\footfullcite[S. 29f.]{nidhra2012black}.
+    Im Gegensatz dazu hat Whiteboxtesting Zugang zum Code für die Tester. 
+    Whiteboxtesting wird auch als Struktur- oder Glasboxtests bezeichnet\footfullcite[S. 30]{nidhra2012black}\footfullcite[S. 1279]{basili1987comparing}.
     Teils wird auch Greyboxtesting erwähnt\footfullcite[S. 2]{jamil2016international}.
-    Dies ist eine Methode, bei welcher die Tester etwas Vorwissen von der Codebasis haben\footfullcite[S. 2]{jovanovic2006software}
+    Dies ist eine Methode, bei welcher die Tester etwas Vorwissen von der Codebasis haben\footfullcite[S. 2]{jovanovic2006software}.
     Sie versucht die Probleme von Blackbox- und Whiteboxtesting zu lösen. 
-    So kann beispielsweise Backendlogik über das Frontend getestet werden, die Tester kenne den Code des Backends hierbei, jedoch nicht den des Frontends.
+    So kann beispielsweise Backendlogik über das Frontend getestet werden 
+    Die Tester kennen den Code des Backends hierbei, jedoch nicht den des Frontends.
     Diese Form des Testens eignet sich so sehr gut für Webanwendungen\footfullcite[S. 179]{acharya2012bridge}.
 \section{Spektrum an Tests}
-    Um Software zu Testen gibt es eine Vielzahl an verschiedenen Tests, welche an der Software durchgeführt werden können.
+    Um Software zu Testen, gibt es eine Vielzahl an verschiedenen Tests, welche an der Software durchgeführt werden können.
     Diese Tests werden zu verschiedenen Zeitpunkten im Softwaredevelopmentlifecycle angewandt\footfullcite[S. 30]{nidhra2012black}.
 \subsection{Arten der dynamischen Tests}
     Die wohl bekannteste Form der dynamischen Tests sind die \textbf{Unittests}.
     Bei diesen wird das kleinste, alleinstehende Modul der Software getestet\footfullcite[vgl. ][S. 24]{runeson2006unit}.
-    Im Umfeld von Objektorientierter Programmierung (OOP) heißt dies vor allem Testen der einzelnen Klassen, da diese als einziges in Isolation getestet werden können\footfullcite[vgl. ][S. 1925f.]{wappler2006evolutionary}.
-    Da die Umsetzung von OOP etwas mangelhaft in diesem Projekt ist und keine tiefgreifende Modualisierung stattfindet,
+    Im Umfeld von Objektorientierter Programmierung (OOP) heißt dies vor allem Testen der einzelnen Klassen, da diese als einzige in Isolation getestet werden können\footfullcite[vgl. ][S. 1925f.]{wappler2006evolutionary}.
+    Da die Umsetzung von OOP in diesem Projekt mangelhaft ist und keine tiefgreifende Modualisierung stattfindet,
     wird in dieser Arbeit Unittests auf die einzelnen Funktionen angewandt.\\
     Um nach Codeveränderungen möglichen Regressionen entgegen zu wirken, werden \textbf{Regressionstests} ausgeführt.
-    Diese Tests werden an Code durchgeführt, welcher sich verändert hat\footfullcite[vgl. ][S. 583f.]{legunsen2016extensive}.\\
-    Um die Funktionalität von mehreren Komponenten, welche zusammen agieren zu Testen, werden \textbf{Integrationstests} verwendet\footfullcite[vgl. ][S. 1]{haser2014software}.
-    Es gibt arbeiten, welche eine Art coupling basiertes Testing vorschlagen\footfullcite{zhenyi1998coupling}.
-    In diesem Beispiel wird genannt, dass Fehler in einem Modul immer dazu führen, dass die davon abhängigen Module davon beeinträchtigt werden \footfullcite[S. 134f.]{zhenyi1998coupling}.
+    Diese Tests werden an dem Code durchgeführt, welcher sich verändert hat\footfullcite[vgl. ][S. 583f.]{legunsen2016extensive}.\\
+    Um die Funktionalität von mehreren Komponenten, welche zusammen agieren, zu testen, werden \textbf{Integrationstests} verwendet\footfullcite[vgl. ][S. 1]{haser2014software}.
+    Es gibt Arbeiten, welche eine Art coupling basiertes Testing vorschlagen\footfullcite{zhenyi1998coupling}.
+    In diesem Beispiel wird genannt, dass Fehler in einem Modul immer dazu führen, dass die vom fehlerhaften Modul abhängigen Module davon beeinträchtigt werden \footfullcite[S. 134f.]{zhenyi1998coupling}.
     Tests des gesamtem Systems sind \textbf{Systemtests}, bei diesen werden Tests durchgeführt, welche die vollständige Funktionsweise der Software testen.
     Zudem ist die Aufgabe dieser Tests, die Fehler beim Zusammenfügen der Module entstanden\footfullcite[S. 128]{myers2004art}.
 
@@ -223,23 +227,25 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Moderne Codereviews sind informell, toolbasiert, asynchron und fokussiert auf Codeänderungen\footfullcite[S. 181]{sadowski2018modern}.
     Es gibt eine Menge an verschiedenen Arten, wie diese Codereviews durchgeführt werden können.
     Dazu zählen die Codeinspektion, asynchrone Reviews per Email, toolbasierte Reviews und pullbasierte Reviews.
-    Diese pullbasierten Reviews beziehen sich auf Reviews von Pullrequests, beispielsweise über Git\footfullcite[vgl. ][S. 182]{sadowski2018modern} oder genauer GitHub.\\
-    Eine weitere Form ist die \textbf{statische Analyse}, diese bezieht sich auf das Betrachten einer Komponente im Bezug auf Form, Struktur, Inhalt und Dokumentation\footfullcite[S. 70]{ieee1990stdGlossary}.
+    Diese pullbasierten Reviews beziehen sich auf Reviews von Pullrequests, beispielsweise über Git\footfullcite[vgl. ][S. 182]{sadowski2018modern} oder GitHub.\\
+    Eine weitere Form ist die \textbf{statische Analyse}. 
+    Diese bezieht sich auf das Betrachten einer Komponente in Bezug auf Form, Struktur, Inhalt und Dokumentation\footfullcite[S. 70]{ieee1990stdGlossary}.
     Es besteht in diesem Zusammenhang auch die Möglichkeit der Automatisierung. 
     Mithilfe dieser Tools kann der Code untersucht werden und mögliche Anormalitäten aufgespürt werden\footfullcite[vgl. ][S. 240f.]{zheng2006value}.
 
 \section{Einfluss von KI/LLMs}
-    Large Language Models (LLM) sind in den letzten Jahren zu einem teils durchaus nützlichen Tool in der Softwareentwicklung geworden.
-    Jedoch sind diese Tools vor allem im Bereich des Softwaretestens heute von hoher Bedeutung und von großem Nutzen.
+    Large Language Models (LLM) sind in den letzten Jahren zu einem durchaus nützlichen Tool in der Softwareentwicklung geworden.
+    Jedoch sind diese Tools vor allem im Bereich des Softwaretestens aktuell von hoher Bedeutung und von großem Nutzen.
     Im Jahr 2024 wurde ein Paper veröffentlicht, welches aktuelle LLMs als nicht ausreichend, sogar für Unittests, 
     ansieht und dies mit Modellen wie GPT 3 vergleicht\footfullcite[S. 917ff.]{wang2024software}.
-    Während diese Arbeit von vielen Ungenauigkeiten von LLMs redet\footfullcite[S. 917]{wang2024software},
-    sehen andere ein größeres Risiko im menschlichen Error und LLMs und KI im generellem als möglichen Weg diese zu reduzieren\footfullcite[S. 5f.]{baqar2025future}.
+    Während diese Arbeit von vielen Ungenauigkeiten der LLMs redet\footfullcite[S. 917]{wang2024software},
+    sehen andere ein größeres Risiko im menschlichen Fehler und LLMs und KI im Generellem als möglichen Weg, diese zu reduzieren\footfullcite[S. 5f.]{baqar2025future}.
     Wieder andere Artikel sind weniger optimistisch und sehen LLMs als sinnvolles Tool, welches jedoch Limits hat.
-    Beispielsweise das Wort Bank im Zusammenhang mit Geldinstitut oder Sitzgelegenheit und inwiefern eine LLM hier in der Lage ist den richtigen Kontext zu ermitteln\footfullcite[S. 21f.]{alenezi2025ai}.
-    Generell können LLMs jedoch von großem Nutzen vor allem, wen es um das Schreiben von Tests, welche sehr einfach zu verstehen sind und für den Mensch nur repetetiv sein können.
-    Beispielsweise bekannte Algorithmen in Unittests, jedoch ist auch hier menschliches Überprüfen noch von nöten.\\
-    Zudem ist es hier sinnvoll anzumerken, dass KI/LLMs im Zusammenhang mit Softwareentwicklung und Softwaretestens eine relativ neue Technologie ist und selbst die Arbeiten von 2024 und 2025 nicht mehr zwingend aktuell sind.
+    Beispielsweise wird das Wort Bank im Zusammenhang mit Geldinstitut oder Sitzgelegenheit verwendet. 
+    Es ist fraglich inwiefern eine LLM hier in der Lage ist den richtigen Kontext zu ermitteln\footfullcite[S. 21f.]{alenezi2025ai}.
+    Generell können LLMs jedoch von großem Nutzen sein, vor allem wenn es um das Schreiben von Tests geht, welche sehr einfach zu verstehen sind und für den Menschen nur repetetiv sein können.
+    Dazu zählen bekannte Algorithmen in Unittests, jedoch ist auch hier menschliches Überprüfen noch notwendig.\\
+    Zudem ist es sinnvoll anzumerken, dass KI/LLMs im Zusammenhang mit Softwareentwicklung und Softwaretesten eine relativ neue Technologie ist und selbst die Arbeiten von 2024 und 2025 nicht mehr zwingend aktuell sind.
 
 \chapter{Planung}
 \section{Testziele}
@@ -247,49 +253,48 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Hier werden diese vor allem von der Grundsicherung der Funktionalität beeinträchtigt.
     Das Ziel der Tests in diesem Produkt ist es eine hohe Testcoverage zu haben und auch jeweilige Edgecases abzudecken.
     Somit soll das Abstürzen des Spieles auf ein Minimum reduziert werden\footfullcite[vgl.][K. 1 S. 12]{expleo}.\\
-    Um eine hohe Qualität der Tests sicherzustellen sollten gewisse Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite[vgl.][S. 93]{baresi2006introduction}.
-    Eine solche Qualitätsplanung ist auch hier von Sinn\footnote{\ref{gph:testQualityPlan}, Qualitätsplanung für Board}.
-    Diese Planung ist nur für Board vorgenommen wurden um in einem sinngemäßen Rahmen zu bleiben.  
+    Um eine hohe Qualität der Tests sicherzustellen, sollten Elemente und die damit verbundenen Anforderungen vor der tatsächlichen Umsetzung der Tests aufgelistet werden\footfullcite[vgl.][S. 93]{baresi2006introduction}.
+    Eine solche Qualitätsplanung ist sinnvoll\footnote{\ref{gph:testQualityPlan}, Qualitätsplanung für Board}.
+    Diese Planung ist nur für\texttt{Board.java} vorgenommen worden um in einem sinngemäßen Rahmen zu bleiben.  
 \section{Qualitätssicherung}
-    Um gute Qualität im Endprodukt zu erhalten muss eine Qualitätssicherung durchgeführt werden. 
-    Diese bezieht sich auf den Entwicklungs- als auch den Testprozess und liegt in der Verantwortung aller Projektbeteiligten\footfullcite[K. 1 S. 23]{expleo}.
+    Um gute Qualität im Endprodukt zu erhalten, muss eine Qualitätssicherung durchgeführt werden. 
+    Diese bezieht sich auf den Entwicklungs- und den Testprozess und liegt in der Verantwortung aller Projektbeteiligten\footfullcite[K. 1 S. 23]{expleo}.
     Im Verlauf des Projektes wurde der Qualitätssicherungsprozess vollständig ignoriert.
     Daraus kann auch die inkonsistente Codequalität hergeleitet werden.
-    So sind Kommentare in sowohl deutsch als auch englisch und einige Codeabschnitte sind deutlich besser lesbar als andere.
+    So sind Kommentare sowohl in deutsch als auch englisch vorhanden und einige Codeabschnitte sind deutlich besser lesbar als andere.
     Somit ist das Projekt langfristig schwer aufrecht zu erhalten und zu erweitern. 
-    Da vor dieser Arbeit nur ein geringes Mass an Testen existierte sind auch viele Fehler unbehoben und in der Entwicklung ignoriert wurden.
-
+    Da vor dieser Arbeit nur ein geringes Maß an Tests existierte sind, auch viele Fehler unbehoben und in der Entwicklung ignoriert worden.
 
 \chapter{Durchführung}
     Zur Durchführung wird jeweils individuell ein Testfall detailliert erläutert.
 \section{Realisierung}
-    Als Problem stellt sich direkt heraus, dass Testen nicht isoliert durchgeführt werden soll\footfullcite[K. 1 S. 52]{expleo}.
-    Dies ist hier nicht möglich, da keine tatsächliche Entwicklung mehr stattfindet.\\
+    Als Problem stellt sich direkt heraus, dass Tests nicht isoliert durchgeführt werden sollen\footfullcite[K. 1 S. 52]{expleo}.
+    Dies ist nicht möglich, da keine tatsächliche Entwicklung mehr stattfindet.\\
     Aufgrund der relativ niedrigen Komplexität ist das Einrichten der Entwicklungs-/Testumgebung verhältnismäßig einfach.
-    Anforderungen des Projektes sind lediglich Java 21 oder höher.
+    Anforderungen des Projektes ist lediglich Java 21 oder höher.
     Empfohlen wird die IDE IntelliJ IDEA.\@
-    Um in der Branch mit gradle zu arbeiten muss auch gradle cli installiert sein.
+    Um in der Branch mit gradle zu arbeiten, muss auch gradle cli installiert sein.
     Die Tests werden mit JUnit 5 durchgeführt und können mittels IntelliJ einfach im Code gestartet werden.
-    In der Branch mit gradle ist es einfach, wie in\ \ref{chp:NecessaryChanges}, mit \textit{gradle test} auszuführen.
-\section{dynamische Tests}
+    In der Branch mit gradle ist es einfach mit \textit{gradle test} auszuführen.
+\section{Dynamische Tests}
     Die dynamischen Softwaretests sind in drei Abschnitte zu unterteilen.
     Unit tests stellen die Funktionalität eines Moduls sicher und testen nur dieses.
-    Mehrere Module werden im Laufe der Softwareentwicklung aneinandergereiht und verknüpft,
-    um dieses Konstrukt zu Testen werden Integration Tests verwendet.
-    Der finale Schritt, die System Tests, Testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}.
+    Mehrere Module werden im Laufe der Softwareentwicklung aneinandergereiht und verknüpft.
+    Um dieses Konstrukt zu testen werden Integration Tests verwendet.
+    Der finale Schritt, die System Tests, testen die gesamte Software aus allen Perspektiven\footfullcite[vgl. ][S. 177]{jamil2016international}.
 \subsection{Unit Tests - Verbleibende Plätze in einer Spalte}\label{sec:unitTests}
-    Um zu schauen, ob weiteres platzieren von Steinen in einer Spalte erlaubt ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
+    Um zu schauen, ob weiteres Platzieren von Steinen in einer Spalte erlaubt, ist gibt es eine Funktion \texttt{int isTopOfColumn(int column)}.
     Diese überprüft, wie viele Plätze in einer Spalte noch frei sind.\\
-    Wenn man diese Funktion betrachtet fällt zuerst der Name auf. 
+    Wenn man diese Funktion betrachtet, fällt zuerst der Name auf. 
     Mit \texttt{isTopOfColumn} ist ein boolean-Wert als Ausgabe zu erwarten.
     Jedoch ist der tatsächliche Rückgabewert vom Typen int.
-    Somit wird die Anzahl der Plätze welche bis zur Maximalmenge zur Verfügung stehen gezählt und dementsprechend 0 zurückgegeben, wenn kein Platz frei ist.\\
-    Zur Implementierung der Tests müssen zuerst Grenzwerte gesetzt werden, in welchen sich die Funktion wie verhalten soll.
-    Das Standartboard hat ein Layout von 7x7 somit kommt Abbildung\ \ref{gph:validInputIsTopOfColumn} für die validen inputs der Funktion zustande.
+    Somit wird die Anzahl der Plätze, welche bis zur Maximalmenge zur Verfügung stehen, gezählt und dementsprechend 0 zurückgegeben, wenn kein Platz frei ist.\\
+    Zur Implementierung der Tests müssen zuerst Grenzwerte gesetzt werden, in welchen sich die Funktion auf eine bestimmte Art und Weise verhalten soll.
+    Das Standardboard hat ein Layout von 6x7; somit kommt Abbildung\ \ref{gph:validInputIsTopOfColumn} für die validen Inputs der Funktion zustande.
     Daraus folgt, dass Tests für die Inputs -1, 0, 6, 7 durchgeführt werden müssen.
     Die Funktion ist nicht nur von der tatsächlichen Spalte abhängig, sondern auch von der Anzahl der platzierten Steine.
     Somit wird auch getestet, ob die richtigen Werte innerhalb des gültigen Bereichs zurückgegeben werden.
-    Um hier das genaue Verhalten zu testen fehlt im Code eine Möglichkeit, um Steine über oder unter dem Spielfeld zu platzieren.
+    Um das genaue Verhalten zu testen, fehlt im Code eine Möglichkeit, um Steine über oder unter dem Spielfeld zu platzieren.
     \begin{figure}[ht!]
     \centering
         \begin{tikzpicture}[>=stealth, thick]
@@ -308,11 +313,11 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
             \node[above] at (3,0.1) {Gültiger Bereich};
 
         \end{tikzpicture}
-        \caption{Grenzwerte der Inputs von \texttt{isTopOfColumn()} (im Fall des Boardlayouts 7x7)}\label{gph:validInputIsTopOfColumn}
+        \caption{Grenzwerte der Inputs von \texttt{isTopOfColumn()} (im Fall des Boardlayouts 6x7)}\label{gph:validInputIsTopOfColumn}
     \end{figure}\\
     In der Durchführung der Tests stellt sich heraus, dass das Verhalten unterhalb der Untergrenze und überhalb der Obergrenze nicht definiert ist.
     Somit kommt es zu einer \texttt{ArrayIndexOutOfBoundsException} für beide Fälle.
-    Da es keine Möglichkeit gibt, die Steine so zu platzieren, dass in einer Spalte mehr Steine liegen als vorgesehen, ist es auch nicht möglich das Verhalten in diesem Fall zu testen.
+    Da es keine Möglichkeit gibt, die Steine so zu platzieren, dass in einer Spalte mehr Steine liegen als vorgesehen, ist es auch nicht möglich, das Verhalten in diesem Fall zu testen.
     Für alle anderen Fälle verhält sich die Funktion wie vorgesehen\footnote{siehe Code\ \ref{code:IsTopOfColumnTest}}.
 
     
@@ -320,16 +325,16 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Das Spiel hat eine Speicherlogik. 
     Für diese wird ein String erstellt, welcher den aktuellen Stand des Spieles aufzeichnet.
     Dieser funktioniert wie folgt:\verb!{playerTurn}a{rows}a{columns}a{isFull}aB{boardLayout}!.
-    Dieser String wird dann in einem txt-File gespeichert und kann beim neustarten des Spiels aufgerufen werden.
+    Dieser String wird dann in einem txt-File gespeichert und kann beim Neustarten des Spiels aufgerufen werden.
     Für den Test ist es wichtig, dass sich das txt-File ordentlich öffnet und ausliest.
     Zudem muss getestet werden, ob der Speichercode den Spielstand ordnungsgemäß darstellt.
-    Auch ist das Verhalten interessant, für den Fall das kein Speicherstand existiert und versucht wird einen zu laden.\\
-    Um dem Ziel von Integration Tests zu folgen sind zwischenwerte und interne Abläufe hier unwichtig.
-    Von Relevanz is lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
-    Für den Testablauf muss hier nach jedem Durchlauf der Zustand der Dateien wieder zum ausgangszustand zurückgebracht werden.
-    Da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.\\
-    Das Diagram\ \ref{gph:IntegrationTest} zeigt auf, wie der Speicher- \& Ladeprozess im Spiel funktioniert. 
-    Dabei wird alles, was keinen direkten Einfluss auf den Speicher- \& Ladeprozess hat ignoriert.
+    Auch ist das Verhalten interessant, für den Fall, dass kein Speicherstand existiert und versucht wird einen zu laden.\\
+    Um dem Ziel von Integration Tests zu folgen sind Zwischenwerte und interne Abläufe unwichtig.
+    Von Relevanz ist lediglich das richtige Ergebnis, in diesem Fall das richtige Speichern und Auslesen.\\
+    Für den Testablauf muss nach jedem Durchlauf der Zustand der Dateien wieder zum Ausgangszustand zurückgebracht,
+    da das Speichern des Spiels eine Datei erstellt, welche zuvor noch nicht da ist.\\
+    Das Diagramm\ \ref{gph:IntegrationTest} zeigt auf, wie der Speicher- \& Ladeprozess im Spiel funktioniert. 
+    Dabei wird alles, was keinen direkten Einfluss auf den Speicher- \& Ladeprozess, hat ignoriert.
     \begin{figure}[ht!]
         \centering
         \tikzstyle{block} = [
@@ -388,32 +393,33 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     
         \caption{Flowchart für Speicher-/Ladeprozess}\label{gph:IntegrationTest}
     \end{figure}\\
-    Aus der Figur\ \ref{gph:IntegrationTest} ist bereits ein Problem des Speicherkonzepts zu erkennen, die Datei wird erst mit erstmaligem Speicher erstellt.
-    Der Knopf zum Laden des Spiels hingegen ist bereits mit dem Öffnen des Spiels möglich.
-    Dies kann zu Fehlern und undefinierten Verhalten führen.\\
+    Aus der Figur\ \ref{gph:IntegrationTest} ist bereits ein Problem des Speicherkonzepts zu erkennen. 
+    Die Datei wird mit erstmaligem Speicher erstellt.
+    Der Knopf zum Laden des Spiels hingegen ist bereits mit dem Öffnen des Spiels vorhanden und nutzbar.
+    Dies kann zu Fehlern und undefiniertem Verhalten führen.\\
     In der tatsächlichen Durchführung der Tests bewahrheitet sich dies.
-    Der \texttt{FileReader} findet keine Datei zum auslesen und wirft ein Error, wenn man den Ladeprozess direkt nach dem Start des Spiels aufruft, ohne zuvor gespeichert zu haben. 
+    Der \texttt{FileReader} findet keine Datei zum Auslesen und wirft ein Error, wenn man den Ladeprozess direkt nach dem Start des Spiels aufruft, ohne zuvor gespeichert zu haben. 
 
 \subsection{System Testing}
-    Während effektive Unit- und Integration Tests verhältnismäßig effektiv umzusetzen sind. 
-    Sind System Tests deutlich komplexer und schwieriger zu implementieren.\\
-    Vor allem in sehr großen Projekten ist diese häufig zu komplex\footfullcite[vgl. ][S. 199]{hayes1999}.
+    Während effektive Unit- und Integration Tests verhältnismäßig effektiv umzusetzen sind,
+    sind System Tests deutlich komplexer und schwieriger zu implementieren.\\
+    Vor allem in sehr großen Projekten ist dies häufig zu komplex\footfullcite[vgl. ][S. 199]{hayes1999}.
     Dieses Projekt ist jedoch verhältnismäßig klein und somit auch in der Hinsicht leichter zu Testen.\\
-    Es besteht die Möglichkeit entsprechende Tests mit Tools wie JUnit durchzuführen.
-    Hierfür fehlen jedoch entsprechende Interfaces um das Frontend ordentlich zu testen.
+    Es besteht die Möglichkeit, entsprechende Tests mit Tools wie JUnit durchzuführen.
+    Hierfür fehlen jedoch entsprechende Interfaces, um das Frontend ordentlich zu testen.
 
-\section{statische Tests}
+\section{Statische Tests}
     Im Rahmen der statischen Tests wird eine Codeanalyse in Form eines Codereviews vorgenommen. 
-    Hier wird der Commit \texttt{dec55bf} betrachtet, welcher die Funktion zum Speichern und Laden des Speicherstands hinzufügte.
+    Es wird der Commit \texttt{dec55bf} betrachtet, welcher die Funktion zum Speichern und Laden des Speicherstands hinzufügte.
     Zu betrachten ist der Code\ \ref{code:setValues1} zum Dekodieren des Savefile-Inhalts.\\
     Zuerst wird der Code nach seiner Lesbarkeit bewertet. 
-    Hier kommt direkt ein Problem auf: Die Benennung der Variablen. 
-    Wie in\ \ref{code:setValuesVars} zu erkennen ist sind die Namen nicht leicht zu entschlüsseln, 
-    vor allem da sie häufig in Kombination miteinander auftreten und so schwer zu verstehen ist, 
+    Dabei kommt direkt ein Problem auf nämlich die Benennung der Variablen. 
+    Wie in\ \ref{code:setValuesVars} zu erkennen ist, sind die Namen nicht leicht zu entschlüsseln.
+    Vor allem da sie häufig in Kombination miteinander auftreten und so schwer zu verstehen ist, 
     welche Variable wofür zuständig ist.
-    Dieses Problem ist wenig problematisch, wenn nur ein Entwickler an dem Programm arbeitet, 
-    jedoch durchaus von größerer Bedeutung, wenn ein Team daran arbeitet.
-    Da gute Namensgebung von fundamentaler Bedeutung für die Lesbarkeit des Codes ist\footfullcite[vgl. ][S. 281]{deissenboeck2006concise}
+    Dieses Problem ist wenig bedeutsam, wenn nur ein Entwickler an dem Programm arbeitet, 
+    jedoch durchaus von größerer Bedeutung, wenn ein Team tätig ist,
+    da gute Namensgebung von fundamentaler Bedeutung für die Lesbarkeit des Codes ist\footfullcite[vgl. ][S. 281]{deissenboeck2006concise}.
     Es stellt sich so das Problem heraus, wie der Code in Zukunft zu warten ist. 
     Die Entwicklung kann so verlangsamt werden.
     \begin{figure}[ht!]
@@ -434,83 +440,86 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
             int c=0;
         \end{lstlisting} 
     \end{figure}\\
-    Zudem hat der Code leichte Formatierungsfehler, so sind Teils Leerzeilen ohne Bedeutung platziert.
+    Zudem hat der Code leichte Formatierungsfehler. 
+    So sind teils Leerzeilen ohne Bedeutung platziert.
     Prinzipiell hätte die gesamte Speicherlogik eine eigene Klasse sein sollen, 
     um den Code besser zu modularisieren und langfristig sicher zu stellen, 
     dass weitere Features hinzugefügt werden können. 
 \section{KI-basierte Tests}
     Der Einfluss von KI im Softwaretesten ist nicht zu bestreiten.
-    Um die KI zu testen wurden im Rahmen dieser Arbeit mehrere Modelle zur Testgenerierung verwendet.
-    Es wurde stets der Prompt\ \ref{pro:testingPrompt}.
-    In diesem wird die KI aufgefordert ausreichende Unittests für die Funktion \texttt{isTopOfColumn()} zu generieren.
+    Um die KI, zu testen wurden im Rahmen dieser Arbeit zwei Modelle zur Testgenerierung verwendet.
+    Es wurde jeweils der Prompt\ \ref{pro:testingPrompt} verwendet.
+    In diesem wird die KI aufgefordert, ausreichende Unittests für die Funktion \texttt{isTopOfColumn()} zu generieren.
     Als Kontext wurde stets die Datei \texttt{Board.java} verwendet.
 \subsection{GitHub Copilot mit GPT 5o-mini}\label{sec:gpt5o}
-    GitHub Copilot ist eine in das Integrated Development Environment (IDE) integrierter KI Assistent, 
+    GitHub Copilot ist ein in das Integrated Development Environment (IDE) integrierter KI Assistent, 
     welcher auch in der Lage ist, mit dem Code und dem Terminal zu interagieren.
     So besteht die Möglichkeit, die KI den Code selber schreiben zu lassen und notfalls mit mehreren Iterationen diesen auch zu verbessern.
     Im Prompt\ \ref{pro:testingPrompt} ist erkennbar, wie eine Datei als Kontext verwendet werden kann.
     Dies geschieht mit dem Symbol \#.\\
-    GPT 5o-mini war hier in der Lage, sowohl die Datei ordentlich zu lesen und zu verstehen,
-    als auch entsprechende Ausführung des Skripts durchzuführen.
+    GPT 5o-mini war in der Lage, sowohl die Datei ordentlich zu lesen und zu verstehen,
+    als auch entsprechende Ausführungen des Skripts durchzuführen.
     Hier versuchte es zuerst gradle, da das Projekt in der Ausführung jedoch kein gradle hat,
-    hat die KI dann entsprechende Terminalanweisungen zur Ausführung dieser Tests mit javac und jar erstellt und selbstständig ausgeführt.
+    hat die KI dann entsprechende Terminalanweisungen zur Ausführung dieser Tests mit javac und jar erstellt und diese selbstständig gestartet.
     Dies funktionierte auch und hat ähnlich wie die handgeschriebenen Unittests in Sektion\ \ref{sec:unitTests} zwei Fehler gefunden.
-    Anzumerken ist hier auch, dass Copilot Zugriff auch auf andere Dateien hat, so sind die Testnamen ähnlich der bereits bestehenden Tests.
+    Anzumerken ist auch, dass Copilot Zugriff auch auf andere Dateien hat. 
+    So sind die Testnamen ähnlich der bereits bestehenden Tests.
     Möglicherweise ist dies auch ein Grund der Ähnlichkeit.
     Wie in Code\ \ref{code:aiGeneratedTests} ersichtlich wird, sind die Tests von einem Abdeckungspunkt deckungsgleich mit den bestehenden Tests.
     Somit war dies ein voller Erfolg.
 \subsection{Claude Sonnet 4.5 im Browser}
     Im Bereich der Softwareentwicklung hat Claude Sonnet den Ruf, sehr gut zum Schreiben von Code geeignet zu sein.
-    Demnach sollte es auch gut für eine Entwicklung von Tests sein.
+    Als Hypothese wurde formuliert, dass Claude Sonnet 4.5 auch gut für die Entwicklung von Tests sein.
     Auch hier wird der selbe Prompt verwendet. 
     Der Unterschied besteht jedoch darin, dass anstatt von \#Board.java der tatsächliche Inhalt von \texttt{Board.java} kopiert wird.
     Schnell entsteht hierbei ein Problem, so ist der Packagename nicht passend mit dem tatsächlichen Punkt, an dem die Datei eingesetzt werden soll.
     Dies ist schnell zu beheben.
-    Ein weiteres Problem trat auf, bei der Kompilierung der Tests, hier ist Claude Sonnet sich nicht von der Struktur des Projektes bewusst und erstellt seine Skripts gemäß eigener Erwartungen.
-    Auch hierfür musste zuerst der Prompt\ \ref{pro:promptAfterTest} verwendet werden, da Claude nicht selbstständig so etwas erledigt.
+    Ein weiteres Problem trat auf bei der Kompilierung der Tests, hier ist Claude Sonnet sich nicht von der Struktur des Projektes bewusst und erstellt seine Skripts gemäß eigener Erwartungen.
+    Auch dafür musste zuerst der Prompt\ \ref{pro:promptAfterTest} verwendet werden, da Claude das nicht selbstständig ausführt.
     Die entstandenen Resultate mussten dann stark angepasst werden, da sie nicht mit dem Projekt vereinbar waren.
     So wurde von einer älteren Version von JUnit ausgegangen, als in dem Projekt vorhanden ist.\\
     Die Testfälle sind wieder sehr gut und stimmen mit den vorher kommenden Unittests überein.
     Hier hat Claude Sonnet ein ähnliches Resultat wie GPT 5o-mini in \ \ref{sec:gpt5o} und die eigenen Tests in\ \ref{sec:unitTests}.
-    Der Erfolg hier ist beschränkter, zwar ist der Code richtig und befasst sich mit den richtigen Ansätzen, 
-    jedoch ist hier noch eine Menge eigenes Einwirken von Nöten. 
+    Der Erfolg ist beschränkter, zwar ist der Code richtig und befasst sich mit den korrekten Ansätzen, 
+    jedoch ist noch eine Menge eigenes Einwirken von Nöten. 
 \subsection{Vergleich}
-    Die grundlegenden Tests sind bei beiden Fällen nahezu gleich und decken die selben Äquvalenzklassen wie in der Grafik\ \ref{gph:validInputIsTopOfColumn} ab.
-    Auch werden in beiden Fällen Steine platziert um das erwartete Verhalten bei steigender Steinezahl pro Spalte zu testen.
-    Der Zugriff auf die gesamte Codebasis, welchen GitHub Copilot hat ist zudem sehr stark in den Resultaten zu spüren.
+    Die grundlegenden Tests sind bei beiden Fällen nahezu gleich und decken die selben Äquivalenzklassen wie in der Grafik\ \ref{gph:validInputIsTopOfColumn} ab.
+    Auch werden in beiden Fällen Steine platziert, um das erwartete Verhalten bei steigender Steinezahl pro Spalte zu testen.
+    Der Zugriff auf die gesamte Codebasis, welchen GitHub Copilot hat, ist zudem sehr stark in den Resultaten abzulesen.
     Im Prompt\ \ref{pro:testingPrompt} wird der entsprechenden LLM Zugang zu \texttt{Board.java} gewährt.
-    GitHub Copilot hat jedoch mehr benutzt, als ursprünglich erlaubt.
-    So war Copilot in der Lage die Packages richtig zu benennen, Testfälle mit Namensgebung ähnlich der existierenden Testfälle zu erstellen
-    und kontextbasierte Anweisungen zu erstellen, welche die Testsuit selbstständig ausgeführt haben.
-    Im Gegensatz dazu hat Claude Sonnet im Browser sehr schwach den Kontext verwendet und viel Architektur des Projektes angenommen, ohne das diese tatsächlich stimmte.\\
+    GitHub Copilot hat jedoch mehr benutzt als ursprünglich erlaubt.
+    So war Copilot in der Lage, die Packages richtig zu benennen, Testfälle mit Namensgebung ähnlich der existierenden Testfälle zu erstellen
+    und kontextbasierte Anweisungen zu geben, welche die Testsuit selbstständig ausgeführt haben.
+    Im Gegensatz dazu hat Claude Sonnet im Browser sehr schwach den Kontext verwendet und viel Architektur des Projektes angenommen, ohne das diese tatsächlich wahrheitsgemäß war.\\
     Somit ist GitHub Copilot hier wesentlich besser geeignet.
     Fragwürdig ist nun, wo die Limits von Copilot und einem leistungsstarken, integrierten KI-Modell sind.
-    Die hier angegebenen Testfälle sind verhältnismäßig sehr einfach zu lösen.
+    Die angegebenen Testfälle sind verhältnismäßig sehr einfach zu lösen.
 
 \chapter{Probleme des Projektes}
 \section{Nicht behobene Probleme}
     Viele Probleme des Projektes konnten im Verlauf der Arbeit nicht behoben werden, da sie zu umfangreich sind.
-    So besteht weiterhin eine schlechte Grundstruktur mit wenigen und zu großen Dateien, welche zudem zu viele Tätigkeiten gleichzeitig machen.
-    Auch wurden nicht alle Errors behoben, so besteht der Error, bei welchem der Nutzer einen Speicherstand laden kann, es jedoch keine Speicherstand gibt und das Programm somit abstürzt.
-    Zudem sind grundsätzliche Logikfehler im Code nicht behoben, da dies nicht im Rahmen der Arbeit ist und das Projekt keine weitere Arbeit erfährt.
+    So besteht weiterhin eine schlechte Grundstruktur mit wenigen und zu großen Dateien, welche zudem zu viele Tätigkeiten gleichzeitig ausführen.
+    Auch wurden nicht alle Errors behoben. 
+    So besteht der Error, bei welchem der Nutzer einen Speicherstand laden kann, es jedoch keinen Speicherstand gibt und das Programm somit abstürzt.
+    Zudem sind grundsätzliche Logikfehler im Code nicht behoben, da dies nicht im Rahmen der Arbeit war und das Projekt keine weitere Entwicklung erfährt.
 \section{Behobene Probleme}
-    Obwohl noch viele Probleme existieren konnten trotzdem einige behoben werden.
-    Dies vor allem im Hinblick auf Testdeckung. 
-    Die bereits stehenden Tests zu vor dem Beginn dieser Arbeit waren bei weitem unzureichend,
-    das Problem bestand vor allem darin, das es keine spezifischen Tests der einzelnen Bestandteile gab, sondern nur generelle Tests, in welchen mehrere Features auf einmal getestet wurden.
+    Obwohl noch viele Probleme existieren, konnten trotzdem einige behoben werden.
+    Dies gelang vor allem im Hinblick auf die Testdeckung. 
+    Die bereits stehenden Tests welche vor dem Beginn dieser Arbeit existierten waren unzureichend.
+    Das Problem bestand vor allem darin, dass es keine spezifischen Tests der einzelnen Bestandteile gab, sondern nur generelle Tests, in welchen mehrere Features auf einmal getestet wurden.
     Die neuen Tests sind wahrhafte Unittests und Integrationstests und fokussieren sich auf ihren jeweiligen Bereich.
-    Dies sollte langfristig positive Folgen haben, da diese Tests auch in Zukunft verwendet werden können um die Funktionalität zu überprüfen.
+    Dies sollte langfristig positive Folgen haben, da diese Tests auch in Zukunft verwendet werden können, um die Funktionalität zu überprüfen.
 
 
 \chapter{Fazit}
     Diese Arbeit zeigt, wie wichtig Softwaretests für Produkte sind, da diese sonst keinen Erfolg haben können.
-    Auch wird ersichtlich, wie bedeutsam Rückblicke auf eigene Projekte sind um seinen eigenen Fortschritt besser zu verstehen und aus alten Fehlern zu lernen.
-    Ein Projekt wie dieses sollte nicht nochmal entstehe, da es nahezu nicht wartbar ist und nicht ausreichend Modular ist.
+    Auch wird ersichtlich, wie bedeutsam Rückblicke auf eigene Projekte sind, um seinen eigenen Fortschritt besser zu verstehen und aus alten Fehlern zu lernen.
+    Eine Durchführung eine solchen Projekts sollte zukünftig auf eine andere Art erfolgen, da es nahezu nicht wartbar und nicht ausreichend modular ist.
     Für nächste Projekte sollte ein Plan, welcher auch genaue Testabläufe definiert, früh erstellt werden.
-    Auch statische Reviews in Form von Codereviews sollten eingeführt werden um eine hohe Qualität zu garantieren.
-    Generell sind im Verlauf der Arbeit häufig Fehler aufgetreten, welche vor allem der Unerfahrenheit zu verschulden waren.\\
+    Auch statische Reviews in Form von Codereviews sollten eingeführt werden, um eine hohe Qualität zu garantieren.
+    Generell sind im Verlauf der Arbeit häufig Fehler aufgetreten, welche vor allem der Unerfahrenheit der Entwickler zuzurechnen waren.\\
     Auch zeigt sich, dass vor allem für einfache Tests KI gewaltige Zeit- und Ressourceneinsparungen erzeugt.
-    Solche Tests, wie hier in Abschnitt\ \ref{sec:unitTests}, werden in Zukunft wahrscheinlich nicht mehr menschlich geschrieben sein.
+    Solche Tests, wie in Abschnitt\ \ref{sec:unitTests}, werden in Zukunft wahrscheinlich nicht mehr menschlich geschrieben sein.
 \begin{appendices}
 \chapter{Grafiken}
     \begin{figure}
