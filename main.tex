@@ -239,7 +239,7 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     Beispielsweise das Wort Bank im Zusammenhang mit Geldinstitut oder Sitzgelegenheit und inwiefern eine LLM hier in der Lage ist den richtigen Kontext zu ermitteln\footfullcite[S. 21f.]{alenezi2025ai}.
     Generell können LLMs jedoch von großem Nutzen vor allem, wen es um das Schreiben von Tests, welche sehr einfach zu verstehen sind und für den Mensch nur repetetiv sein können.
     Beispielsweise bekannte Algorithmen in Unittests, jedoch ist auch hier menschliches Überprüfen noch von nöten.\\
-    Zudem ist es hier sinnvoll anzumerken, dass KI/LLMs eine relativ neue Technologie ist und selbst die Arbeiten von 2024 und 2025 nicht mehr zwingend aktuell sind.
+    Zudem ist es hier sinnvoll anzumerken, dass KI/LLMs im Zusammenhang mit Softwareentwicklung und Softwaretestens eine relativ neue Technologie ist und selbst die Arbeiten von 2024 und 2025 nicht mehr zwingend aktuell sind.
 
 \chapter{Planung}
 \section{Testziele}
@@ -394,13 +394,13 @@ Hochschule Zittau/Görlitz \\ Fakultät Elektrotechnik und Informatik
     In der tatsächlichen Durchführung der Tests bewahrheitet sich dies.
     Der \texttt{FileReader} findet keine Datei zum auslesen und wirft ein Error, wenn man den Ladeprozess direkt nach dem Start des Spiels aufruft, ohne zuvor gespeichert zu haben. 
 
-    
-
 \subsection{System Testing}
     Während effektive Unit- und Integration Tests verhältnismäßig effektiv umzusetzen sind. 
     Sind System Tests deutlich komplexer und schwieriger zu implementieren.\\
     Vor allem in sehr großen Projekten ist diese häufig zu komplex\footfullcite[vgl. ][S. 199]{hayes1999}.
-    Dieses Projekt ist jedoch verhältnismäßig klein und somit auch in der Hinsicht leichter zu Testen.
+    Dieses Projekt ist jedoch verhältnismäßig klein und somit auch in der Hinsicht leichter zu Testen.\\
+    Es besteht die Möglichkeit entsprechende Tests mit Tools wie JUnit durchzuführen.
+    Hierfür fehlen jedoch entsprechende Interfaces um das Frontend ordentlich zu testen.
 
 \section{statische Tests}
     Im Rahmen der statischen Tests wird eine Codeanalyse in Form eines Codereviews vorgenommen. 
